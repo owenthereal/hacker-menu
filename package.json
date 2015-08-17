@@ -1,0 +1,20 @@
+{
+  "name": "hacker-menu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron-prebuilt": "^0.30.4",
+    "standard": "^5.1.0"
+  },
+  "dependencies": {
+    "firebase": "^2.2.9",
+    "menubar": "^2.1.2",
+    "underscore": "^1.8.3"
+  }
+}
