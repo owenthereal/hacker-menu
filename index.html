@@ -2,9 +2,19 @@
 <html>
   <head>
     <link rel="stylesheet" href="css/ratchet.css">
+    <style type="text/css">
+      /* overrides */
+      .content .table-view { margin: 0 !important; }
+      ul, code {font-size: 14px; color: #777;}
+    </style>
   </head>
   <body>
-    hello
-    <script src='client.js'></script>
+    <div id="container"></div>
+    <script>
+      window.onload = function(){
+        require("babel/register")()
+        require("./client/main.jsx")
+      }
+    </script>
   </body>
 </html>
