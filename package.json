@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "standard"
+    "test": "standard",
+    "app": "electron ./",
+    "build": "electron-packager . HackMenu --platform=darwin --arch=x64 --version=0.30.4 --ignore='node_modules/electron-(packager|prebuild)'"
   },
   "author": "",
   "license": "ISC",
