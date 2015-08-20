@@ -1,5 +1,5 @@
 import React from 'react'
-import StoryMenu from './story_menu.jsx'
+import StoryMenu from './story_menu.js'
 
 React.render(
   <StoryMenu />,

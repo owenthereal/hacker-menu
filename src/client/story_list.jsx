@@ -1,5 +1,5 @@
 import React from 'react'
-import Story from './story.jsx'
+import Story from './story.js'
 
 export default class StoryList extends React.Component {
   render() {

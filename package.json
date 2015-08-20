@@ -2,11 +2,11 @@
   "name": "hacker-menu",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "standard",
-    "app": "electron ./",
-    "build": "electron-packager . HackMenu --platform=darwin --arch=x64 --version=0.30.4 --ignore='node_modules/electron-(packager|prebuild)'"
+    "build": "babel src -D -d dist",
+    "app": "npm run build && electron ./",
+    "package": "npm run build && electron-packager . HackMenu --platform=darwin --arch=x64 --version=0.30.4 --ignore='node_modules/electron-(packager|prebuild)'"
   },
   "author": "",
   "license": "ISC",

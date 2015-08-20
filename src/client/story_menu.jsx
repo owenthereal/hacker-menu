@@ -1,7 +1,7 @@
 import React from 'react'
 import Client from 'electron-rpc/client'
-import StoryList from './story_list.jsx'
-import Menu from './menu.jsx'
+import StoryList from './story_list.js'
+import Menu from './menu.js'
 import HN from './hn.js'
 
 export default class StoryMenu extends React.Component {
