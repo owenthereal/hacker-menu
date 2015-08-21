@@ -1,5 +1,7 @@
 import Events from 'events'
 import Firebase from 'firebase'
+import Moment from 'moment'
+import URL from 'url'
 
 export default class HN {
   constructor(url) {
@@ -19,7 +21,15 @@ export default class HN {
 
         self.hn.child('item/' + id).once('value', function(storySnapshot) {
           var story = storySnapshot.val()
+          if (!story) {
+            console.log(storySnapshot.key())
+            return
+          }
+
           story.rank = index
+          story.timeAgo = Moment.unix(story.time).fromNow()
+          story.yurl = "https://news.ycombinator.com/item?id=" + story.id
+          story.host = URL.parse(story.url).hostname
           self.eventEmitter.emit("story", story)
         }, function(err) {
           console.log(err)

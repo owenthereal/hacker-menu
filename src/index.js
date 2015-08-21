@@ -26,4 +26,8 @@ menu.on('ready', function () {
     server.destroy()
     menu.app.terminate()
   })
+
+  server.on('open-url', function(req) {
+    shell.openExternal(req.body.url)
+  })
 })

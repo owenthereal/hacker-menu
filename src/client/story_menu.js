@@ -25,10 +25,13 @@ export default class StoryMenu extends React.Component {
   onQuitClick() {
     this.client.request('terminate')
   }
+  onCommentClick(url) {
+    this.client.request('open-url', { url: url })
+  }
   render() {
     return (
       <div className="storyMenu">
-        <StoryList data={this.state.data} />
+        <StoryList data={this.state.data} onCommentClick={this.onCommentClick.bind(this)} />
         <Menu onQuitClick={this.onQuitClick.bind(this)} />
       </div>
     )

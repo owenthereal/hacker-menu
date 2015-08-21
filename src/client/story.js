@@ -1,12 +1,21 @@
 import React from 'react'
 
 export default class Story extends React.Component {
+  handleCommentOnClick(e) {
+    e.preventDefault()
+    this.props.onCommentClick(this.props.data.yurl)
+  }
   render() {
-    var url = "https://news.ycombinator.com/item?id=" + this.props.data.id
+    var story = this.props.data
     return (
-      <div className="story">
-        <a href={url} target="_blank">{this.props.data.title}</a>
-      </div>
+      <a href={story.url} target="_blank" className="navigate-right">
+        <span className="badge" onClick={this.handleCommentOnClick.bind(this)}>{story.descendants}</span>
+        <div className="media-body">
+          {story.title}
+          <p>{story.host} {story.timeAgo}</p>
+          <p>{story.score} points</p>
+        </div>
+      </a>
     )
   }
 }

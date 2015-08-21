@@ -3,15 +3,22 @@ import Story from './story.js'
 
 export default class StoryList extends React.Component {
   render() {
+    var onCommentClick = this.props.onCommentClick
     var storyNodes = this.props.data.map(function (story) {
       return (
-        <Story key={story.id} data={story} />
+        <li key={story.rank} className="table-view-cell media">
+          <Story data={story} onCommentClick={onCommentClick} />
+        </li>
       )
     })
     return (
-      <div className="storyList">
+      <ul className="content table-view">
+        <li className="table-view-cell table-view-divider">
+          Top Stories
+        </li>
         {storyNodes}
-      </div>
+        <br/>
+      </ul>
     )
   }
 }
