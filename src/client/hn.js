@@ -30,7 +30,7 @@ export default class HN {
           story.timeAgo = Moment.unix(story.time).fromNow()
           story.yurl = "https://news.ycombinator.com/item?id=" + story.id
           story.host = URL.parse(story.url).hostname
-          self.eventEmitter.emit("story", story)
+          self.eventEmitter.emit("top", story)
         }, function(err) {
           console.log(err)
         });

@@ -13,9 +13,6 @@ export default class StoryList extends React.Component {
     })
     return (
       <ul className="content table-view">
-        <li className="table-view-cell table-view-divider">
-          Top Stories
-        </li>
         {storyNodes}
         <br/>
       </ul>
