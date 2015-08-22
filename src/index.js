@@ -9,7 +9,7 @@ var opts = {dir: __dirname}
 var menu = Menubar(opts)
 
 process.on("uncaughtException", function (err) {
-  dialog.showErrorBox("Uncaught Exception: " + err.message, err.stack || "")
+  Dialog.showErrorBox("Uncaught Exception: " + err.message, err.stack || "")
   menu.app.quit()
 })
 
@@ -18,7 +18,7 @@ menu.on("ready", function () {
     server.configure(menu.window.webContents)
     menu.window.webContents.on("new-window", function (e, url, frameName, disposition) {
       e.preventDefault()
-      shell.openExternal(url)
+      Shell.openExternal(url)
     })
   })
 
@@ -28,6 +28,6 @@ menu.on("ready", function () {
   })
 
   server.on("open-url", function(req) {
-    shell.openExternal(req.body.url)
+    Shell.openExternal(req.body.url)
   })
 })

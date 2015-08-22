@@ -3,7 +3,7 @@ import React from "react"
 export default class Story extends React.Component {
   handleCommentOnClick(e) {
     e.preventDefault()
-    this.props.onCommentClick(this.props.data.yurl)
+    this.props.onCommentClick(this.props.story.yurl)
   }
   render() {
     var story = this.props.story
