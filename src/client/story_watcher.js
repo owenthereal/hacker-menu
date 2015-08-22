@@ -14,7 +14,6 @@ export default class StoryWatcher extends Events.EventEmitter {
   }
   onStoryChange (type, storyIds) {
     var self = this
-    var count = 0
 
     storyIds.forEach(function (storyId) {
       var index = parseInt(storyId.key(), 10)
@@ -41,7 +40,7 @@ export default class StoryWatcher extends Events.EventEmitter {
         self.emitError(type, err)
       })
 
-      return ++count === self.maxNumOfStories
+      return false
     })
   }
   getYurl (id) {
@@ -70,7 +69,7 @@ export default class StoryWatcher extends Events.EventEmitter {
       this.on(type + '-error', errback)
     }
 
-    this.fbRefs[type] = this.fb.child(this.getChildName(type))
+    this.fbRefs[type] = this.fb.child(this.getChildName(type)).limitToFirst(this.maxNumOfStories)
     this.fbFuns[type] = this.fbRefs[type].on('value', this.onStoryChange.bind(this, type), function (err) {
       this.emitError(type, err)
     }.bind(this))
