@@ -22,6 +22,6 @@ export default class Story extends React.Component {
 }
 
 Story.propTypes = {
-  onCommentClick: React.PropTypes.string.isRequired,
-  story: React.PropTypes.string.isRequired
+  onCommentClick: React.PropTypes.func.isRequired,
+  story: React.PropTypes.object.isRequired
 }

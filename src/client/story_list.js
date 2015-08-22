@@ -21,6 +21,6 @@ export default class StoryList extends React.Component {
 }
 
 StoryList.propTypes = {
-  onCommentClick: React.PropTypes.string.isRequired,
-  stories: React.PropTypes.string.isRequired
+  onCommentClick: React.PropTypes.func.isRequired,
+  stories: React.PropTypes.array.isRequired
 }

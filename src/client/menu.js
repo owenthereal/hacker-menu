@@ -18,5 +18,5 @@ export default class Menu extends React.Component {
 }
 
 Menu.propTypes = {
-  onQuitClick: React.PropTypes.string.isRequired
+  onQuitClick: React.PropTypes.func.isRequired
 }
