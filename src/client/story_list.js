@@ -1,20 +1,20 @@
-import React from 'react'
-import Story from './story.js'
+import React from "react"
+import Story from "./story.js"
+import _     from "underscore"
 
 export default class StoryList extends React.Component {
   render() {
     var onCommentClick = this.props.onCommentClick
-    var storyNodes = this.props.data.map(function (story) {
+    var storyNodes = _.map(this.props.stories, function (story) {
       return (
         <li key={story.rank} className="table-view-cell media">
-          <Story data={story} onCommentClick={onCommentClick} />
+          <Story story={story} onCommentClick={onCommentClick} />
         </li>
       )
     })
     return (
       <ul className="content table-view">
         {storyNodes}
-        <br/>
       </ul>
     )
   }

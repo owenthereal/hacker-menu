@@ -1,7 +1,7 @@
-import React from 'react'
-import StoryMenu from './story_menu.js'
+import React    from "react"
+import StoryBox from "./story_box.js"
 
 React.render(
-  <StoryMenu />,
-  document.getElementById('container')
+  <StoryBox />,
+  document.getElementById("container")
 )
