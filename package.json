@@ -5,15 +5,18 @@
   "main": "./dist/index.js",
   "scripts": {
     "build": "babel src -D -d dist",
+    "test": "standard",
     "app": "npm run build && electron ./",
     "package": "npm run build && electron-packager . 'Hacker Menu' --platform=darwin --arch=x64 --version=0.30.4 --ignore='src' --ignore='node_modules/babel' --ignore='node_modules/electron-(packager|prebuild)'"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel": "^5.8.21",
+    "babel-eslint": "^4.0.10",
     "electron-packager": "^5.0.1",
     "electron-prebuilt": "^0.30.4",
-    "babel": "^5.8.21"
+    "standard": "^5.1.0"
   },
   "dependencies": {
     "electron-rpc": "^1.0.3",
