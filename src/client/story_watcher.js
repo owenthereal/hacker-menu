@@ -7,6 +7,7 @@ import _        from "underscore"
 export default class StoryWatcher extends Events.EventEmitter {
   constructor(url) {
     super()
+    this.maxNumOfStories = 20 // TODO: make it configurable
     this.fb = new Firebase(url)
     this.fbRefs = {}
     this.fbFuns = {}
@@ -40,7 +41,7 @@ export default class StoryWatcher extends Events.EventEmitter {
         self.emitError(type, story)
       })
 
-      return ++count == 10
+      return ++count == self.maxNumOfStories
     })
   }
   getYurl(id) {
