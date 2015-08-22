@@ -34,6 +34,9 @@ export default class StoryWatcher extends Events.EventEmitter {
         } else {
           story.host = URL.parse(story.url).hostname
         }
+        if (_.isUndefined(story.descendants)) {
+          story.descendants = 0
+        }
 
         self.emit(type, story)
       }, function (err) {
