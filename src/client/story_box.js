@@ -54,11 +54,11 @@ export default class StoryBox extends React.Component {
     }, this)
     return (
       <div className='storyMenu'>
-        <nav className='bar bar-nav'>
+        <header className='bar bar-nav'>
           <div className='segmented-control'>
             {navNodes}
           </div>
-        </nav>
+        </header>
         <StoryList stories={this.state.stories} onCommentClick={this.onCommentClick.bind(this)} />
         <Menu onQuitClick={this.onQuitClick.bind(this)} status={this.state.status} />
       </div>
