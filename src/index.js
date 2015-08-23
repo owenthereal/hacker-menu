@@ -2,10 +2,11 @@ import Menubar from 'menubar'
 import Shell from 'shell'
 import Dialog from 'dialog'
 import Server from 'electron-rpc/server'
+import Path from 'path'
 
 var server = new Server()
 
-var opts = {dir: __dirname}
+var opts = {dir: __dirname, icon: Path.join(__dirname, '..', 'images', 'Icon.png')}
 var menu = Menubar(opts)
 
 process.on('uncaughtException', function (err) {
