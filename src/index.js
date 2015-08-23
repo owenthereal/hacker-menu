@@ -14,16 +14,16 @@ process.on('uncaughtException', function (err) {
   menu.app.quit()
 })
 
+menu.on('after-create-window', function () {
+  server.configure(menu.window.webContents)
+  menu.window.webContents.on('new-window', function (e, url, frameName, disposition) {
+    e.preventDefault()
+    Shell.openExternal(url)
+  })
+})
+
 menu.on('ready', function () {
   menu.tray.setToolTip('Hacker Menu')
-
-  menu.on('after-create-window', function () {
-    server.configure(menu.window.webContents)
-    menu.window.webContents.on('new-window', function (e, url, frameName, disposition) {
-      e.preventDefault()
-      Shell.openExternal(url)
-    })
-  })
 
   server.on('terminate', function (e) {
     server.destroy()
