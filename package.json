@@ -1,7 +1,7 @@
 {
   "name": "hacker-menu",
   "version": "1.0.0",
-  "description": "",
+  "description": "Read Hacker News like a hacker",
   "main": "./dist/index.js",
   "scripts": {
     "build": "babel src -D -d dist",
@@ -9,7 +9,7 @@
     "app": "npm run build && electron ./",
     "package": "npm run build && electron-packager . 'Hacker Menu' --overwrite --sign='Developer ID Application: Jingwen Ou' --icon='images/Icon@1024.icns' --platform=darwin --arch=x64 --version=0.30.4 --ignore='src' --ignore='node_modules/(babel|standard)' --ignore='node_modules/electron-(packager|prebuild|rebuild)'"
   },
-  "author": "",
+  "author": "Jingwen Owen Ou",
   "license": "ISC",
   "devDependencies": {
     "babel": "^5.8.21",
