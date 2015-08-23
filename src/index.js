@@ -6,7 +6,7 @@ import Path from 'path'
 
 var server = new Server()
 
-var opts = {dir: __dirname, icon: Path.join(__dirname, '..', 'images', 'Icon.png')}
+var opts = { dir: __dirname, icon: Path.join(__dirname, '..', 'images', 'Icon.png'), preloadWindow: true }
 var menu = Menubar(opts)
 
 process.on('uncaughtException', function (err) {
@@ -15,6 +15,8 @@ process.on('uncaughtException', function (err) {
 })
 
 menu.on('ready', function () {
+  menu.tray.setToolTip('Hacker Menu')
+
   menu.on('after-create-window', function () {
     server.configure(menu.window.webContents)
     menu.window.webContents.on('new-window', function (e, url, frameName, disposition) {
