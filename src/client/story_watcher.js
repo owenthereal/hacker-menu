@@ -14,6 +14,7 @@ export default class StoryWatcher extends Events.EventEmitter {
   }
   onStoryChange (type, storyIds) {
     var self = this
+    var count = storyIds.numChildren()
 
     storyIds.forEach(function (storyId) {
       var index = parseInt(storyId.key(), 10)
@@ -39,6 +40,12 @@ export default class StoryWatcher extends Events.EventEmitter {
         }
 
         self.emit(type, story)
+
+        if (--count === 0) {
+          self.emit('status', 'updated')
+        } else {
+          self.emit('status', 'syncing')
+        }
       }, function (err) {
         self.emitError(type, err)
       })

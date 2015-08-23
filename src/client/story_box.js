@@ -10,10 +10,13 @@ export default class StoryBox extends React.Component {
     super(props)
 
     this.client = new Client()
-    this.state = { stories: [], selected: 'top' }
+    this.state = { stories: [], selected: 'top', status: 'updated' }
     this.watcher = new StoryWatcher('https://hacker-news.firebaseio.com/v0')
   }
   componentDidMount () {
+    this.watcher.on('status', function (status) {
+      this.setState({ status: status })
+    }.bind(this))
     this.onNavbarClick('top')
   }
   onQuitClick () {
@@ -57,7 +60,7 @@ export default class StoryBox extends React.Component {
           </div>
         </nav>
         <StoryList stories={this.state.stories} onCommentClick={this.onCommentClick.bind(this)} />
-        <Menu onQuitClick={this.onQuitClick.bind(this)} />
+        <Menu onQuitClick={this.onQuitClick.bind(this)} status={this.state.status} />
       </div>
     )
   }
