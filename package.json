@@ -7,7 +7,7 @@
     "build": "babel src -D -d dist",
     "test": "standard",
     "app": "npm run build && electron ./",
-    "package": "npm run build && electron-packager . 'Hacker Menu' --platform=darwin --arch=x64 --version=0.30.4 --ignore='src' --ignore='node_modules/babel' --ignore='node_modules/electron-(packager|prebuild)'"
+    "package": "npm run build && electron-packager . 'Hacker Menu' --overwrite --icon='images/Icon@1024.icns' --platform=darwin --arch=x64 --version=0.30.4 --ignore='src' --ignore='node_modules/babel' --ignore='node_modules/electron-(packager|prebuild)'"
   },
   "author": "",
   "license": "ISC",
