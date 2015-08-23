@@ -9,7 +9,7 @@ export default class Story extends React.Component {
   render () {
     var story = this.props.story
     return (
-      <a href={story.url} target='_blank' className='navigate-right'>
+      <a href={story.url} target='_blank'>
         <span className='badge' onClick={this.handleCommentOnClick.bind(this)}>{story.descendants}</span>
         <div className='media-body'>
           {story.title}
