@@ -14,8 +14,14 @@ export default class StoryBox extends React.Component {
     this.watcher = new StoryWatcher('https://hacker-news.firebaseio.com/v0')
   }
   componentDidMount () {
+    this.client.on('update-available', function (releaseVersion) {
+      this.setState({ status: 'update-available' })
+    }.bind(this))
     this.watcher.on('status', function (status) {
-      this.setState({ status: status })
+      // don't update status if there's update available
+      if (this.state.status !== 'update-available') {
+        this.setState({ status: status })
+      }
     }.bind(this))
     this.onNavbarClick(this.state.selected)
   }

@@ -4,6 +4,7 @@ import Server from 'electron-rpc/server'
 import Path from 'path'
 import nslog from 'nslog'
 import _ from 'underscore'
+import AutoUpdateManager from './auto_update_manager'
 
 var server = new Server()
 
@@ -31,9 +32,19 @@ menu.on('after-create-window', function () {
 menu.on('ready', function () {
   menu.tray.setToolTip('Hacker Menu')
 
+  var autoUpdateManager = new AutoUpdateManager(menu.app.getVersion())
+  autoUpdateManager.on('update-available', function (releaseVersion) {
+    server.send('update-available', releaseVersion)
+  })
+
   server.on('terminate', function (e) {
     server.destroy()
-    menu.app.terminate()
+
+    if (autoUpdateManager.isUpdateAvailable()) {
+      autoUpdateManager.quitAndInstall()
+    } else {
+      menu.app.terminate()
+    }
   })
 
   server.on('open-url', function (req) {
