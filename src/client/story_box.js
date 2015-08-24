@@ -10,7 +10,7 @@ export default class StoryBox extends React.Component {
     super(props)
 
     this.client = new Client()
-    this.state = { stories: [], selected: 'top', status: 'updated' }
+    this.state = { stories: [], selected: 'top', status: StoryWatcher.SYNCING_STATUS }
     this.watcher = new StoryWatcher('https://hacker-news.firebaseio.com/v0')
   }
   componentDidMount () {

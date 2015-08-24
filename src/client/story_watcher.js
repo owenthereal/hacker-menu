@@ -42,9 +42,9 @@ export default class StoryWatcher extends Events.EventEmitter {
         self.emit(type, story)
 
         if (--count === 0) {
-          self.emit('status', 'updated')
+          self.emit('status', StoryWatcher.UPDATED_STATUS)
         } else {
-          self.emit('status', 'syncing')
+          self.emit('status', StoryWatcher.SYNCING_STATUS)
         }
       }, function (err) {
         self.emitError(type, err)
@@ -98,3 +98,6 @@ export default class StoryWatcher extends Events.EventEmitter {
     this.emit(type + '-error', obj)
   }
 }
+
+StoryWatcher.SYNCING_STATUS = 'syncing'
+StoryWatcher.UPDATED_STATUS = 'updated'

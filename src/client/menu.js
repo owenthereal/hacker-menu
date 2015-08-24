@@ -1,4 +1,5 @@
 import React from 'react'
+import StoryWatcher from './story_watcher.js'
 
 export default class Menu extends React.Component {
   handleOnClick (e) {
@@ -8,7 +9,7 @@ export default class Menu extends React.Component {
 
   render () {
     var statusNode
-    if (this.props.status === 'updated') {
+    if (this.props.status === StoryWatcher.UPDATED_STATUS) {
       statusNode = <span className='status icon icon-check pull-left'> Up to date</span>
     } else {
       statusNode = <span className='status icon icon-more pull-left'> Syncing</span>
