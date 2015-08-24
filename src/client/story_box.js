@@ -10,14 +10,14 @@ export default class StoryBox extends React.Component {
     super(props)
 
     this.client = new Client()
-    this.state = { stories: [], selected: 'top', status: StoryWatcher.SYNCING_STATUS }
+    this.state = { stories: [], selected: StoryWatcher.TOP_TYPE, status: StoryWatcher.SYNCING_STATUS }
     this.watcher = new StoryWatcher('https://hacker-news.firebaseio.com/v0')
   }
   componentDidMount () {
     this.watcher.on('status', function (status) {
       this.setState({ status: status })
     }.bind(this))
-    this.onNavbarClick('top')
+    this.onNavbarClick(this.state.selected)
   }
   onQuitClick () {
     this.client.request('terminate')
@@ -42,7 +42,7 @@ export default class StoryBox extends React.Component {
     return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase()
   }
   render () {
-    var navNodes = _.map([ 'top', 'show', 'ask' ], function (selection) {
+    var navNodes = _.map([ StoryWatcher.TOP_TYPE, StoryWatcher.SHOW_TYPE, StoryWatcher.ASK_TYPE ], function (selection) {
       var display = this.capitalize(selection)
       var className = 'control-item'
       if (this.state.selected === selection) {

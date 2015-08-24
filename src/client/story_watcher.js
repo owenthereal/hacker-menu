@@ -58,11 +58,11 @@ export default class StoryWatcher extends Events.EventEmitter {
   }
   getChildName (type) {
     var child = ''
-    if (type === 'top') {
+    if (type === StoryWatcher.TOP_TYPE) {
       child = 'topstories'
-    } else if (type === 'show') {
+    } else if (type === StoryWatcher.SHOW_TYPE) {
       child = 'showstories'
-    } else if (type === 'ask') {
+    } else if (type === StoryWatcher.ASK_TYPE) {
       child = 'askstories'
     } else {
       throw new Error('Unsupported watch type ' + type)
@@ -101,3 +101,7 @@ export default class StoryWatcher extends Events.EventEmitter {
 
 StoryWatcher.SYNCING_STATUS = 'syncing'
 StoryWatcher.UPDATED_STATUS = 'updated'
+
+StoryWatcher.TOP_TYPE = 'top'
+StoryWatcher.SHOW_TYPE = 'show'
+StoryWatcher.ASK_TYPE = 'ask'
