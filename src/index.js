@@ -6,6 +6,8 @@ import nslog from 'nslog'
 import _ from 'underscore'
 import AutoUpdateManager from './auto_update_manager'
 
+console.log = nslog
+
 var server = new Server()
 
 var opts = { dir: __dirname, icon: Path.join(__dirname, '..', 'images', 'Icon.png'), preloadWindow: true }
@@ -13,11 +15,11 @@ var menu = Menubar(opts)
 
 process.on('uncaughtException', function (error) {
   if (!_.isEmpty(error.message)) {
-    nslog(error.message)
+    console.log(error.message)
   }
 
   if (!_.isEmpty(error.stack)) {
-    nslog(error.stack)
+    console.log(error.stack)
   }
 })
 

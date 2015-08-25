@@ -1,5 +1,4 @@
 import Events from 'events'
-import nslog from 'nslog'
 import autoUpdater from 'auto-updater'
 
 export default class AutoUpdateManager extends Events.EventEmitter {
@@ -18,7 +17,7 @@ export default class AutoUpdateManager extends Events.EventEmitter {
 
     autoUpdater.on('error', function (event, message) {
       self.setState(AutoUpdateManager.ERROR_STATE)
-      nslog('Error updating app: ' + message)
+      console.log('Error updating app: ' + message)
     })
 
     autoUpdater.setFeedUrl(this.feedUrl)
@@ -37,7 +36,7 @@ export default class AutoUpdateManager extends Events.EventEmitter {
 
     autoUpdater.on('update-downloaded', function (event, releaseNotes, releaseName, releaseDate, updateUrl) {
       self.setState(AutoUpdateManager.UPDATE_AVAILABLE_STATE)
-      nslog({releaseNotes: releaseNotes, releaseName: releaseName, releaseDate: releaseDate, updateUrl: updateUrl})
+      console.log({releaseNotes: releaseNotes, releaseName: releaseName, releaseDate: releaseDate, updateUrl: updateUrl})
 
       self.emit('update-available', releaseName)
     })
@@ -48,7 +47,7 @@ export default class AutoUpdateManager extends Events.EventEmitter {
   setState (state) {
     this.state = state
     this.emit('state-changed', state)
-    nslog(state)
+    console.log('state-changed: ' + state)
   }
 
   scheduleUpdateCheck () {
