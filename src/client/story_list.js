@@ -4,11 +4,11 @@ import _ from 'underscore'
 
 export default class StoryList extends React.Component {
   render () {
-    var onCommentClick = this.props.onCommentClick
+    var onUrlClick = this.props.onUrlClick
     var storyNodes = _.map(this.props.stories, function (story) {
       return (
         <li key={story.rank} className='table-view-cell media'>
-          <Story story={story} onCommentClick={onCommentClick} />
+          <Story story={story} onUrlClick={onUrlClick} />
         </li>
       )
     })
@@ -21,6 +21,6 @@ export default class StoryList extends React.Component {
 }
 
 StoryList.propTypes = {
-  onCommentClick: React.PropTypes.func.isRequired,
+  onUrlClick: React.PropTypes.func.isRequired,
   stories: React.PropTypes.array.isRequired
 }

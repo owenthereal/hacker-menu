@@ -28,7 +28,7 @@ export default class StoryBox extends React.Component {
   onQuitClick () {
     this.client.request('terminate')
   }
-  onCommentClick (url) {
+  onUrlClick (url) {
     this.client.request('open-url', { url: url })
   }
   onNavbarClick (selected) {
@@ -65,7 +65,7 @@ export default class StoryBox extends React.Component {
             {navNodes}
           </div>
         </header>
-        <StoryList stories={this.state.stories} onCommentClick={this.onCommentClick.bind(this)} />
+        <StoryList stories={this.state.stories} onUrlClick={this.onUrlClick.bind(this)} />
         <Menu onQuitClick={this.onQuitClick.bind(this)} status={this.state.status} />
       </div>
     )

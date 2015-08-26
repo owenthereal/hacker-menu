@@ -30,6 +30,7 @@ export default class StoryWatcher extends Events.EventEmitter {
         story.rank = index
         story.timeAgo = Moment.unix(story.time).fromNow()
         story.yurl = self.getYurl(story.id)
+        story.by_url = self.getByUrl(story.by)
         if (_.isEmpty(story.url)) {
           story.url = story.yurl
         } else {
@@ -55,6 +56,9 @@ export default class StoryWatcher extends Events.EventEmitter {
   }
   getYurl (id) {
     return 'https://news.ycombinator.com/item?id=' + id
+  }
+  getByUrl (by) {
+    return 'https://news.ycombinator.com/user?id=' + by
   }
   getChildName (type) {
     var child = ''
