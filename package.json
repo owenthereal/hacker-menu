@@ -4,7 +4,6 @@
   "description": "Read Hacker News like a hacker",
   "main": "./dist/index.js",
   "scripts": {
-    "postinstall": "electron-rebuild",
     "build": "babel src -D -d dist",
     "test": "standard",
     "prestart": "npm run build",
@@ -18,7 +17,6 @@
     "babel-eslint": "^4.0.10",
     "electron-packager": "^5.0.1",
     "electron-prebuilt": "^0.30.4",
-    "electron-rebuild": "^0.2.5",
     "standard": "^5.1.0"
   },
   "dependencies": {
@@ -26,7 +24,6 @@
     "firebase": "^2.2.9",
     "menubar": "^2.1.2",
     "moment": "^2.10.6",
-    "nslog": "^2.0.0",
     "react": "^0.13.3",
     "underscore": "^1.8.3"
   }

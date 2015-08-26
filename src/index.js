@@ -2,11 +2,8 @@ import Menubar from 'menubar'
 import Shell from 'shell'
 import Server from 'electron-rpc/server'
 import Path from 'path'
-import nslog from 'nslog'
 import _ from 'underscore'
 import AutoUpdateManager from './auto_update_manager'
-
-console.log = nslog
 
 var server = new Server()
 
