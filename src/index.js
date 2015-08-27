@@ -3,7 +3,7 @@ import Shell from 'shell'
 import Server from 'electron-rpc/server'
 import Path from 'path'
 import _ from 'underscore'
-import AutoUpdateManager from './auto_update_manager'
+import AutoUpdateManager from './server/auto_update_manager'
 
 var server = new Server()
 
