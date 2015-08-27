@@ -58,7 +58,7 @@ export default class StoryManager extends Events.EventEmitter {
   watch (type, callback) {
     var self = this
 
-    if (!_.isNull(callback)) {
+    if (callback) {
       self.on(type, callback)
     }
 

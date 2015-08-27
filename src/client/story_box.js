@@ -18,7 +18,7 @@ export default class StoryBox extends React.Component {
     var self = this
 
     self.client.on('update-available', function (err, releaseVersion) {
-      if (!_.isNull(err)) {
+      if (err) {
         console.log(err)
         return
       }
@@ -26,7 +26,7 @@ export default class StoryBox extends React.Component {
       self.setState({ status: 'update-available' })
     })
     self.client.on('story-manager-status', function (err, status) {
-      if (!_.isNull(err)) {
+      if (err) {
         console.log(err)
         return
       }
@@ -54,13 +54,13 @@ export default class StoryBox extends React.Component {
   onNavbarClick (selected) {
     var self = this
 
-    if (!_.isUndefined(self.storycb)) {
+    if (self.storycb) {
       self.client.removeListener(selected, self.storycb)
     }
 
     self.setState({ stories: [], selected: selected })
     self.storycb = function (err, stories) {
-      if (!_.isNull(err) && !_.isUndefined(err)) {
+      if (err) {
         return
       }
 

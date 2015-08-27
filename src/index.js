@@ -46,7 +46,7 @@ menu.on('ready', function () {
   _.each(StoryType.ALL, function (type) {
     server.on(type, function (req, next) {
       storyManager.fetch(type, function (err, stories) {
-        if (!_.isNull(err)) {
+        if (err) {
           return next(err)
         }
 
@@ -55,7 +55,7 @@ menu.on('ready', function () {
     })
 
     storyManager.watch(type, function (err, stories) {
-      if (!_.isNull(err)) {
+      if (err) {
         console.log(err)
         return
       }
