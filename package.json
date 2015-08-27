@@ -20,6 +20,7 @@
     "standard": "^5.1.0"
   },
   "dependencies": {
+    "async": "^1.4.2",
     "electron-rpc": "^1.0.3",
     "firebase": "^2.2.9",
     "menubar": "^2.1.2",

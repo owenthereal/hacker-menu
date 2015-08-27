@@ -3,52 +3,80 @@ import _ from 'underscore'
 import Client from 'electron-rpc/client'
 import StoryList from './story_list.js'
 import Menu from './menu.js'
-import StoryWatcher from './story_watcher.js'
+import StoryType from '../model/story_type'
+import StoryManagerStatus from '../model/story_manager_status'
 
 export default class StoryBox extends React.Component {
   constructor (props) {
     super(props)
 
     this.client = new Client()
-    this.state = { stories: [], selected: StoryWatcher.TOP_TYPE, status: StoryWatcher.SYNCING_STATUS }
-    this.watcher = new StoryWatcher('https://hacker-news.firebaseio.com/v0')
+    this.state = { stories: [], selected: StoryType.TOP_TYPE, status: StoryManagerStatus.SYNCING_STATUS }
   }
+
   componentDidMount () {
-    this.client.on('update-available', function (releaseVersion) {
-      this.setState({ status: 'update-available' })
-    }.bind(this))
-    this.watcher.on('status', function (status) {
-      // don't update status if there's update available
-      if (this.state.status !== 'update-available') {
-        this.setState({ status: status })
+    var self = this
+
+    self.client.on('update-available', function (err, releaseVersion) {
+      if (err) {
+        console.log(err)
+        return
       }
-    }.bind(this))
-    this.onNavbarClick(this.state.selected)
+
+      self.setState({ status: 'update-available' })
+    })
+    self.client.on('story-manager-status', function (err, status) {
+      if (err) {
+        console.log(err)
+        return
+      }
+
+      if (self.state.selected !== status.type) {
+        return
+      }
+
+      // `update-available` overrides any status
+      if (self.state.status !== 'update-available') {
+        self.setState({ status: status.status })
+      }
+    })
+    self.onNavbarClick(self.state.selected)
   }
+
   onQuitClick () {
     this.client.request('terminate')
   }
+
   onUrlClick (url) {
     this.client.request('open-url', { url: url })
   }
-  onNavbarClick (selected) {
-    this.watcher.unwatchAll()
-    this.setState({ stories: [], selected: selected })
-    this.watcher.watch(selected, function (story) {
-      // console.log(JSON.stringify(this.state.stories, null, 2))
 
-      this.setState(function (state, props) {
-        state.stories[story.rank] = story
-      })
-    }.bind(this), function (error) {
-      console.log(error)
-    })
+  onNavbarClick (selected) {
+    var self = this
+
+    if (self.storycb) {
+      self.client.removeListener(selected, self.storycb)
+    }
+
+    self.setState({ stories: [], selected: selected })
+    self.storycb = function (err, stories) {
+      if (err) {
+        return
+      }
+
+      // console.log(JSON.stringify(stories, null, 2))
+      self.setState({stories: stories})
+    }
+    self.client.request(selected, self.storycb)
+    self.client.on(selected, self.storycb)
   }
+
   capitalize (s) {
     return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase()
   }
+
   render () {
-    var navNodes = _.map([ StoryWatcher.TOP_TYPE, StoryWatcher.SHOW_TYPE, StoryWatcher.ASK_TYPE ], function (selection) {
+    var navNodes = _.map(StoryType.ALL, function (selection) {
       var display = this.capitalize(selection)
       var className = 'control-item'
       if (this.state.selected === selection) {
