@@ -5,9 +5,9 @@ import _ from 'underscore'
 export default class StoryList extends React.Component {
   render () {
     var onUrlClick = this.props.onUrlClick
-    var storyNodes = _.map(this.props.stories, function (story) {
+    var storyNodes = _.map(this.props.stories, function (story, index) {
       return (
-        <li key={story.rank} className='table-view-cell media'>
+        <li key={index} className='table-view-cell media'>
           <Story story={story} onUrlClick={onUrlClick} />
         </li>
       )
