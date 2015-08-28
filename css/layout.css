@@ -1,0 +1,101 @@
+/* overrides ratchet */
+.content {
+  background: white;
+  margin: 0 0 44px !important;
+}
+
+ul, code {
+  font-size: 14px;
+}
+
+.bar .status {
+  font-size: 12px;
+  padding-top: 15px;
+}
+
+.comment {
+  font-size: 11px;
+}
+
+/* global */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* header */
+.bar-nav {
+  background: #f0f0f0;
+}
+
+.bar.bar-nav {
+  padding: 0;
+}
+
+.bar .segmented-control {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  top: auto;
+}
+
+.segmented-control .control-item {
+  cursor: pointer;
+  padding-bottom: 14px;
+  padding-top: 18px;
+  text-transform: uppercase;
+}
+
+.segmented-control .control-item.active {
+  background: white;
+}
+
+/* content */
+.table-view {
+  border-bottom: 0;
+}
+
+.table-view-cell > a > .badge {
+  background: #f0f0f0;
+  font-size: .85rem;
+  top: 27%;
+}
+
+.story-title {
+  font-size: 16px;
+}
+
+.story-host {
+  font-size: 12px;
+  font-style: italic;
+  margin-top: .45rem;
+}
+
+.icon-comment:before {
+  background: url(../images/icon-comment.svg) no-repeat center center;
+  content: '';
+  display: block;
+  float: left;
+  height: 20px;
+  margin-right: 5px;
+  width: 20px;
+}
+
+.story-poster {
+  font-size: 12px;
+  font-style: italic;
+}
+
+
+/* footer */
+.bar-footer {
+  background: #f0f0f0;
+}
+
+.bar .btn {
+  background: transparent;
+  border: 0;
+  border-left: 1px solid #979797;
+  border-radius: 0;
+  padding: 17px 14px 14px 23px;
+  top: 0;
+}
