@@ -5,6 +5,7 @@
   "main": "./dist/index.js",
   "scripts": {
     "build": "babel src -D -d dist",
+    "watch": "babel src -D -d dist -w",
     "test": "standard",
     "prestart": "npm run build",
     "start": "electron ./",
