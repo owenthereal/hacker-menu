@@ -87,7 +87,7 @@ export default class StoryBox extends React.Component {
       )
     }, this)
     return (
-      <div className='storyMenu'>
+      <div className='story-menu'>
         <header className='bar bar-nav'>
           <div className='segmented-control'>
             {navNodes}

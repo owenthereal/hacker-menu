@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="18px" height="15px" viewBox="0 0 18 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title></title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="hacker-news" sketch:type="MSArtboardGroup" transform="translate(-150.000000, -348.000000)" stroke="#3F3D3C">
+            <g id="row-copy-2" sketch:type="MSLayerGroup" transform="translate(150.000000, 284.000000)">
+                <g id="comments" transform="translate(1.000000, 63.000000)" sketch:type="MSShapeGroup">
+                    <path d="M2.88095444,2 C2.13251563,2 1.49323374,2.2650681 0.963089586,2.79521226 C0.432945431,3.32535641 0.16787733,3.9646383 0.16787733,4.71307711 L0.16787733,9.50293563 C0.16787733,10.1266346 0.243451655,10.9537493 0.587348975,11.4485537 C0.931246296,11.943358 1.7651098,12.330745 3.31377101,12.3029927 L3.31377101,15.4847201 C3.31377101,15.4847201 5.12858133,14.0589876 7.24262827,12.3029927 L13.2549022,12.3307453 C14.003341,12.3307453 14.6746436,11.9786976 15.2047877,11.4485534 C15.7349319,10.9184093 16,10.2791274 16,9.53068859 L16,4.74083007 C16,3.99239126 15.7349319,3.35310937 15.2047877,2.82296521 C14.6746436,2.29282106 14.0353617,2.02775296 13.2869229,2.02775296 L2.88095444,2 Z" id="" transform="translate(8.083939, 8.742360) scale(-1, 1) translate(-8.083939, -8.742360) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

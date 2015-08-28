@@ -17,15 +17,15 @@ export default class Story extends React.Component {
       <a href={story.url} target='_blank'>
         <span className='badge'>{story.score}</span>
         <div className='media-body'>
-          {story.title}
-          <p>{story.host}</p>
-          <p>
-            <span className='icon icon-edit comment' onClick={this.handleYurlOnClick.bind(this)}>
+          <span className='story-title'>{story.title}</span>
+          <p className='story-host'>{story.host}</p>
+          <p className='story-poster'>
+            <span className='icon-comment' onClick={this.handleYurlOnClick.bind(this)}>
               {story.descendants}
-            </span> -&nbsp;
+            </span> &ndash;&nbsp;
             <span onClick={this.handleByOnClick.bind(this)}>
               {story.by}
-            </span> -&nbsp;
+            </span> &ndash;&nbsp;
             <span onClick={this.handleYurlOnClick.bind(this)}>
               {story.timeAgo}
             </span>
