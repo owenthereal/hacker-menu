@@ -7,6 +7,7 @@ import AutoUpdateManager from './server/auto_update_manager'
 import StoryManager from './server/story_manager'
 import TrayManager from './server/tray_manager'
 import StoryType from './model/story_type'
+import ReadCache from './model/read_cache'
 
 var server = new Server()
 
@@ -17,6 +18,8 @@ var opts = {
   preloadWindow: true
 }
 var menu = Menubar(opts)
+var appDataPath = Path.join(menu.app.getPath('appData'), menu.app.getName())
+var readCache = new ReadCache(appDataPath, 500)
 
 process.on('uncaughtException', function (error) {
   if (!_.isEmpty(error.message)) {
@@ -30,9 +33,17 @@ process.on('uncaughtException', function (error) {
 
 menu.on('after-create-window', function () {
   server.configure(menu.window.webContents)
+  readCache.load()
+
   menu.window.webContents.on('new-window', function (e, url, frameName, disposition) {
     e.preventDefault()
     Shell.openExternal(url)
+  })
+
+  menu.window.on('closed', function () {
+    menu.window = null
+    console.log('persisting db')
+    readCache.store()
   })
 })
 
@@ -46,7 +57,7 @@ menu.on('ready', function () {
 
   var trayManager = new TrayManager(menu.window, menu.tray, opts.icon, opts.iconNew)
 
-  var storyManager = new StoryManager(20)
+  var storyManager = new StoryManager(20, readCache)
   storyManager.on('story-manager-status', function (status) {
     server.send('story-manager-status', status)
   })
@@ -87,5 +98,9 @@ menu.on('ready', function () {
 
   server.on('open-url', function (req) {
     Shell.openExternal(req.body.url)
+  })
+
+  server.on('mark-as-read', function (req) {
+    readCache.set(req.body.id)
   })
 })

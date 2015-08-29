@@ -8,10 +8,11 @@ import StoryType from '../model/story_type'
 import StoryManagerStatus from '../model/story_manager_status'
 
 export default class StoryManager extends Events.EventEmitter {
-  constructor (maxNumOfStories) {
+  constructor (maxNumOfStories, cache) {
     super()
     this.maxNumOfStories = maxNumOfStories
     this.fb = new Firebase('https://hacker-news.firebaseio.com/v0')
+    this.cache = cache
   }
 
   fetchStory (storyId, callback) {
@@ -33,6 +34,12 @@ export default class StoryManager extends Events.EventEmitter {
       }
       if (_.isUndefined(story.descendants)) {
         story.descendants = 0
+      }
+
+      if (self.cache.contains(story.id)) {
+        story.hasRead = true
+      } else {
+        story.hasRead = false
       }
 
       // console.log(JSON.stringify(story, null, 2))

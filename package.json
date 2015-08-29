@@ -26,6 +26,8 @@
     "async": "^1.4.2",
     "electron-rpc": "^1.0.3",
     "firebase": "^2.2.9",
+    "fs-plus": "^2.8.1",
+    "lru-cache": "^2.6.5",
     "menubar": "^2.1.2",
     "moment": "^2.10.6",
     "react": "^0.13.3",

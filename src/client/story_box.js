@@ -51,6 +51,10 @@ export default class StoryBox extends React.Component {
     this.client.request('open-url', { url: url })
   }
 
+  onMarkAsRead (id) {
+    this.client.request('mark-as-read', { id: id })
+  }
+
   onNavbarClick (selected) {
     var self = this
 
@@ -93,7 +97,7 @@ export default class StoryBox extends React.Component {
             {navNodes}
           </div>
         </header>
-        <StoryList stories={this.state.stories} onUrlClick={this.onUrlClick.bind(this)} />
+        <StoryList stories={this.state.stories} onUrlClick={this.onUrlClick.bind(this)} onMarkAsRead={this.onMarkAsRead.bind(this)} />
         <Menu onQuitClick={this.onQuitClick.bind(this)} status={this.state.status} />
       </div>
     )
