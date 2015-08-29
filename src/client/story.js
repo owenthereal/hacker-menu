@@ -34,22 +34,21 @@ export default class Story extends React.Component {
 
   render () {
     var story = this.props.story
-    var readIcon
+    var storyState
     if (this.state.hasRead) {
-      readIcon = <span className="icon icon-star-filled"></span>
-    } else {
-      readIcon = <span className="icon icon-star"></span>
+      storyState = 'story read'
     }
-
+    else {
+      storyState = 'story'
+    }
     return (
-      <a href='#'>
+      <div className={storyState}>
         <span className='badge' onClick={this.handleYurlOnClick.bind(this)}>{story.score}</span>
         <div className='media-body'>
-          {readIcon}
-          <span className='story-title' onClick={this.handleUrlClick.bind(this)}>{story.title}</span>
-          <p className='story-host'>{story.host}</p>
+          <span className='story-title clickable' onClick={this.handleUrlClick.bind(this)}>{story.title}</span>
+          <span className='story-host clickable'>{story.host}</span>
           <p className='story-poster'>
-            <span className='icon-comment' onClick={this.handleYurlOnClick.bind(this)}>
+            <span className='icon-comment clickable' onClick={this.handleYurlOnClick.bind(this)}>
               {story.descendants}
             </span> &ndash;&nbsp;
             <span onClick={this.handleByOnClick.bind(this)}>
@@ -60,7 +59,7 @@ export default class Story extends React.Component {
             </span>
           </p>
         </div>
-      </a>
+      </div>
     )
   }
 }

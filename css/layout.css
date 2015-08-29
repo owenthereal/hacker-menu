@@ -22,6 +22,14 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  color: #333;
+}
+
 /* header */
 .bar-nav {
   background: #f0f0f0;
@@ -54,17 +62,41 @@ body {
   border-bottom: 0;
 }
 
-.table-view-cell > a > .badge {
+.story {
+  color: inherit;
+  display: block;
+  margin: -11px -65px -11px -15px;
+  overflow: hidden;
+  padding: inherit;
+  position: relative;
+}
+
+.story:hover {
+  background: #fdfdfd;
+}
+
+.story.read {
+  border-left: 4px solid #717171;
+}
+
+.story .badge {
   background: #f0f0f0;
   font-size: .85rem;
+  position: absolute;
+  right: 15px;
   top: 27%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .story-title {
+  display: block;
   font-size: 16px;
 }
 
 .story-host {
+  display: inline-block;
   font-size: 12px;
   font-style: italic;
   margin-top: .45rem;
@@ -84,7 +116,6 @@ body {
   font-size: 12px;
   font-style: italic;
 }
-
 
 /* footer */
 .bar-footer {
