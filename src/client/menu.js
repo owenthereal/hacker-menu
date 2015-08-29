@@ -1,5 +1,4 @@
 import React from 'react'
-import StoryManagerStatus from '../model/story_manager_status.js'
 
 export default class Menu extends React.Component {
   handleOnClick (e) {

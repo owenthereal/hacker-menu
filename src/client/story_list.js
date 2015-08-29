@@ -23,5 +23,6 @@ export default class StoryList extends React.Component {
 
 StoryList.propTypes = {
   onUrlClick: React.PropTypes.func.isRequired,
+  onMarkAsRead: React.PropTypes.func.isRequired,
   stories: React.PropTypes.array.isRequired
 }

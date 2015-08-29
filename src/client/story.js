@@ -37,8 +37,7 @@ export default class Story extends React.Component {
     var storyState
     if (this.state.hasRead) {
       storyState = 'story read'
-    }
-    else {
+    } else {
       storyState = 'story'
     }
     return (
@@ -66,5 +65,6 @@ export default class Story extends React.Component {
 
 Story.propTypes = {
   onUrlClick: React.PropTypes.func.isRequired,
+  onMarkAsRead: React.PropTypes.func.isRequired,
   story: React.PropTypes.object.isRequired
 }

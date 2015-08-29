@@ -4,14 +4,13 @@ import Client from 'electron-rpc/client'
 import StoryList from './story_list.js'
 import Menu from './menu.js'
 import StoryType from '../model/story_type'
-import StoryManagerStatus from '../model/story_manager_status'
 
 export default class StoryBox extends React.Component {
   constructor (props) {
     super(props)
 
     this.client = new Client()
-    this.state = { stories: [], selected: StoryType.TOP_TYPE, status: "" }
+    this.state = { stories: [], selected: StoryType.TOP_TYPE, status: '' }
   }
 
   componentDidMount () {
