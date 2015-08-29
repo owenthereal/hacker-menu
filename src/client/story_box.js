@@ -11,7 +11,7 @@ export default class StoryBox extends React.Component {
     super(props)
 
     this.client = new Client()
-    this.state = { stories: [], selected: StoryType.TOP_TYPE, status: StoryManagerStatus.SYNCING_STATUS }
+    this.state = { stories: [], selected: StoryType.TOP_TYPE, status: "" }
   }
 
   componentDidMount () {
@@ -24,21 +24,6 @@ export default class StoryBox extends React.Component {
       }
 
       self.setState({ status: 'update-available' })
-    })
-    self.client.on('story-manager-status', function (err, status) {
-      if (err) {
-        console.log(err)
-        return
-      }
-
-      if (self.state.selected !== status.type) {
-        return
-      }
-
-      // `update-available` overrides any status
-      if (self.state.status !== 'update-available') {
-        self.setState({ status: status.status })
-      }
     })
     self.onNavbarClick(self.state.selected)
   }

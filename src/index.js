@@ -58,9 +58,6 @@ menu.on('ready', function () {
   var trayManager = new TrayManager(menu.window, menu.tray, opts.icon, opts.iconNew)
 
   var storyManager = new StoryManager(20, readCache)
-  storyManager.on('story-manager-status', function (status) {
-    server.send('story-manager-status', status)
-  })
   storyManager.on('new-story', function () {
     trayManager.notifyNewStories()
   })
