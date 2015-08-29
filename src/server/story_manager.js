@@ -67,6 +67,7 @@ export default class StoryManager extends Events.EventEmitter {
       async.map(storyIds.val(), self.fetchStory.bind(self), function (err, stories) {
         self.emit(type, err, stories)
         self.emit('story-manager-status', { type: type, status: StoryManagerStatus.UPDATED_STATUS })
+        self.emit('new-story')
       })
     }, function (err) {
       self.emit(type, err)
