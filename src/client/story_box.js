@@ -10,7 +10,13 @@ export default class StoryBox extends React.Component {
     super(props)
 
     this.client = new Client()
-    this.state = { stories: [], selected: StoryType.TOP_TYPE, status: '' }
+    this.state = {
+      stories: [],
+      selected: StoryType.TOP_TYPE,
+      status: '',
+      version: '',
+      upgradeVersion: ''
+    }
   }
 
   componentDidMount () {
@@ -22,8 +28,18 @@ export default class StoryBox extends React.Component {
         return
       }
 
-      self.setState({ status: 'update-available' })
+      self.setState({ status: 'update-available', upgradeVersion: releaseVersion })
     })
+
+    self.client.request('current-version', function (err, version) {
+      if (err) {
+        console.log(err)
+        return
+      }
+
+      self.setState({ version: version })
+    })
+
     self.onNavbarClick(self.state.selected)
   }
 
@@ -82,7 +98,7 @@ export default class StoryBox extends React.Component {
           </div>
         </header>
         <StoryList stories={this.state.stories} onUrlClick={this.onUrlClick.bind(this)} onMarkAsRead={this.onMarkAsRead.bind(this)} />
-        <Menu onQuitClick={this.onQuitClick.bind(this)} status={this.state.status} />
+        <Menu onQuitClick={this.onQuitClick.bind(this)} status={this.state.status} version={this.state.version} upgradeVersion={this.state.upgradeVersion} />
       </div>
     )
   }
