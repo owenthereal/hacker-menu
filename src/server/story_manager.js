@@ -13,6 +13,7 @@ export default class StoryManager extends Events.EventEmitter {
     this.maxNumOfStories = maxNumOfStories
     this.fb = new Firebase('https://hacker-news.firebaseio.com/v0')
     this.cache = cache
+    this.stories = {}
   }
 
   fetchStory (storyId, callback) {
@@ -74,10 +75,24 @@ export default class StoryManager extends Events.EventEmitter {
       async.map(storyIds.val(), self.fetchStory.bind(self), function (err, stories) {
         self.emit(type, err, stories)
         self.emit('story-manager-status', { type: type, status: StoryManagerStatus.UPDATED_STATUS })
-        self.emit('new-story')
+
+        if (!self.stories[type]) {
+          self.stories[type] = []
+        }
+        var newStories = self.filterNewStories(stories, self.stories[type])
+        if (!_.isEmpty(newStories)) {
+          self.emit('new-story', newStories)
+        }
+        self.stories[type] = stories
       })
     }, function (err) {
       self.emit(type, err)
+    })
+  }
+
+  filterNewStories (updatedStories, oldStories) {
+    return _.filter(updatedStories, function (story) {
+      return !story.hasRead && !_.findWhere(oldStories, { id: story.id })
     })
   }
 
