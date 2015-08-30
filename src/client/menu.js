@@ -7,16 +7,16 @@ export default class Menu extends React.Component {
   }
 
   render () {
-    var statusNode
+    var statusText = 'v' + this.props.version
     var buttonText = 'Quit'
     if (this.props.status === 'update-available') {
-      statusNode = <span className='status icon icon-download pull-left'> Update available</span>
-      buttonText = 'Quit and update'
+      statusText += ' (v' + this.props.upgradeVersion + ' available, restart to upgrade)'
+      buttonText = 'Restart'
     }
 
     return (
       <div className='bar bar-standard bar-footer'>
-        {statusNode}
+        <span className='pull-left'>{statusText}</span>
         <button className='btn pull-right' onClick={this.handleOnClick.bind(this)}>
           {buttonText}
         </button>
@@ -27,5 +27,7 @@ export default class Menu extends React.Component {
 
 Menu.propTypes = {
   status: React.PropTypes.string.isRequired,
+  version: React.PropTypes.string.isRequired,
+  upgradeVersion: React.PropTypes.string.isRequired,
   onQuitClick: React.PropTypes.func.isRequired
 }

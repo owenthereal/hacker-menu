@@ -83,6 +83,10 @@ menu.on('ready', function () {
     })
   })
 
+  server.on('current-version', function (req, next) {
+    next(null, menu.app.getVersion())
+  })
+
   server.on('terminate', function (e) {
     server.destroy()
 
