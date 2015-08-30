@@ -7,10 +7,7 @@ export default class ReadCache {
   constructor (folder, cacheSize) {
     this.path = path.join(folder, 'Storage', 'db.json')
     this.cache = LRU({
-      max: cacheSize,
-      length: function (n) {
-        return n.length
-      }
+      max: cacheSize
     })
   }
 
@@ -38,12 +35,10 @@ export default class ReadCache {
   }
 
   set (val) {
-    val = val.toString()
     return this.cache.set(val, val)
   }
 
   contains (val) {
-    val = val.toString()
     return this.cache.has(val)
   }
 }
