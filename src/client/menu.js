@@ -16,7 +16,7 @@ export default class Menu extends React.Component {
 
     return (
       <div className='bar bar-standard bar-footer'>
-        <span className='status pull-left'>{statusText}</span>
+        <em className='status pull-left'>{statusText}</em>
         <button className='btn pull-right' onClick={this.handleOnClick.bind(this)}>
           {buttonText}
         </button>
