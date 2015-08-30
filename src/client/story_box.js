@@ -75,19 +75,14 @@ export default class StoryBox extends React.Component {
     self.client.on(selected, self.storycb)
   }
 
-  capitalize (s) {
-    return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase()
-  }
-
   render () {
     var navNodes = _.map(StoryType.ALL, function (selection) {
-      var display = this.capitalize(selection)
       var className = 'control-item'
       if (this.state.selected === selection) {
         className = className + ' active'
       }
       return (
-        <a key={selection} className={className} onClick={this.onNavbarClick.bind(this, selection)}>{display}</a>
+        <a key={selection} className={className} onClick={this.onNavbarClick.bind(this, selection)}>{selection}</a>
       )
     }, this)
     return (
