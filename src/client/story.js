@@ -45,7 +45,7 @@ export default class Story extends React.Component {
         <span className='badge clickable' onClick={this.handleYurlOnClick.bind(this)}>{story.score}</span>
         <div className='media-body'>
           <span className='story-title clickable' onClick={this.handleUrlClick.bind(this)}>{story.title}</span>
-          <span className='story-host clickable'>{story.host}</span>
+          <span className='story-host'>{story.host}</span>
           <p className='story-poster'>
             <span className='icon-comment clickable' onClick={this.handleYurlOnClick.bind(this)}>
               {story.descendants}
