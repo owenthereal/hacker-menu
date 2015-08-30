@@ -42,7 +42,7 @@ export default class Story extends React.Component {
     }
     return (
       <div className={storyState}>
-        <span className='badge' onClick={this.handleYurlOnClick.bind(this)}>{story.score}</span>
+        <span className='badge clickable' onClick={this.handleYurlOnClick.bind(this)}>{story.score}</span>
         <div className='media-body'>
           <span className='story-title clickable' onClick={this.handleUrlClick.bind(this)}>{story.title}</span>
           <span className='story-host clickable'>{story.host}</span>
@@ -50,10 +50,10 @@ export default class Story extends React.Component {
             <span className='icon-comment clickable' onClick={this.handleYurlOnClick.bind(this)}>
               {story.descendants}
             </span> &ndash;&nbsp;
-            <span onClick={this.handleByOnClick.bind(this)}>
+            <span className='clickable' onClick={this.handleByOnClick.bind(this)}>
               {story.by}
             </span> &ndash;&nbsp;
-            <span onClick={this.handleYurlOnClick.bind(this)}>
+            <span className='clickable' onClick={this.handleYurlOnClick.bind(this)}>
               {story.timeAgo}
             </span>
           </p>
