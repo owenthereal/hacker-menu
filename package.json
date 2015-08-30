@@ -1,8 +1,17 @@
 {
   "name": "hacker-menu",
+  "productName": "Hacker Menu",
   "version": "1.0.0",
-  "description": "Read Hacker News like a hacker",
+  "description": "A menu to read Hacker News",
   "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jingweno/hacker-menu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jingweno/hacker-menu/issues"
+  },
+  "license": "MIT",
   "scripts": {
     "build": "babel src -D -d dist",
     "csscomb": "csscomb css/layout.css",
