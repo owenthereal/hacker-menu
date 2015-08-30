@@ -27,7 +27,7 @@ body {
 }
 
 .clickable:hover {
-  color: #333;
+  color: #ff6601;
 }
 
 /* header */
@@ -63,8 +63,8 @@ body {
 }
 
 .story {
+  border-left: 4px solid #ff6601;
   color: inherit;
-  display: block;
   margin: -11px -65px -11px -15px;
   overflow: hidden;
   padding: inherit;
@@ -76,7 +76,7 @@ body {
 }
 
 .story.read {
-  border-left: 4px solid #717171;
+  border-left-color: #bdbdbd;
 }
 
 .story .badge {
