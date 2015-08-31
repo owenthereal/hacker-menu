@@ -101,7 +101,8 @@ menu.on('ready', function () {
     Shell.openExternal(req.body.url)
   })
 
-  server.on('mark-as-read', function (req) {
+  server.on('mark-as-read', function (req, next) {
     readCache.set(req.body.id)
+    next()
   })
 })

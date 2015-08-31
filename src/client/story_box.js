@@ -52,7 +52,11 @@ export default class StoryBox extends React.Component {
   }
 
   onMarkAsRead (id) {
-    this.client.request('mark-as-read', { id: id })
+    this.client.request('mark-as-read', { id: id }, function () {
+      var story = _.findWhere(this.state.stories, { id: id })
+      story.hasRead = true
+      this.setState({ stories: this.state.stories })
+    }.bind(this))
   }
 
   onNavbarClick (selected) {

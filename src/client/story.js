@@ -1,14 +1,7 @@
 import React from 'react'
 
 export default class Story extends React.Component {
-  constructor (props) {
-    super(props)
-
-    this.state = { hasRead: this.props.story.hasRead }
-  }
-
   markAsRead () {
-    this.setState({ hasRead: true })
     this.props.onMarkAsRead(this.props.story.id)
   }
 
@@ -35,7 +28,7 @@ export default class Story extends React.Component {
   render () {
     var story = this.props.story
     var storyState
-    if (this.state.hasRead) {
+    if (story.hasRead) {
       storyState = 'story read'
     } else {
       storyState = 'story'
