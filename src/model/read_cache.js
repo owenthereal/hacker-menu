@@ -34,6 +34,8 @@ export default class ReadCache {
   }
 
   store () {
+    this.logger.info('read-cache.store')
+
     var result = []
     this.cache.forEach(function (value, key) {
       result.push(key)
