@@ -21,7 +21,6 @@ var opts = {
 }
 var menu = Menubar(opts)
 var appDataPath = Path.join(menu.app.getPath('appData'), menu.app.getName())
-var readCache = new ReadCache(appDataPath, 500)
 
 var logDir = Path.join(appDataPath, 'Log')
 try {
@@ -35,6 +34,8 @@ var logger = global.logger = new Winston.Logger({
     new Winston.transports.DailyRotateFile({ filename: Path.join(logDir, 'app.log') })
   ]
 })
+
+var readCache = new ReadCache(appDataPath, 500)
 
 process.on('uncaughtException', function (error) {
   if (!_.isEmpty(error.message)) {
