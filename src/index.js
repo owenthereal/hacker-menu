@@ -57,7 +57,6 @@ menu.on('after-create-window', function () {
 
   menu.window.on('closed', function () {
     menu.window = null
-    logger.info('persisting db')
     readCache.store()
   })
 })
