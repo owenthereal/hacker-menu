@@ -8,6 +8,7 @@ export default class AutoUpdateManager extends Events.EventEmitter {
     // this.feedUrl = 'http://localhost:5000/updates?version=' + version
     this.feedUrl = 'https://hacker-menu.herokuapp.com/updates?version=' + version
     this.state = AutoUpdateManager.IDLE_STATE
+    this.logger = global.logger
 
     process.nextTick(this.setupAutoUpdater.bind(this))
   }
@@ -17,7 +18,7 @@ export default class AutoUpdateManager extends Events.EventEmitter {
 
     autoUpdater.on('error', function (event, message) {
       self.setState(AutoUpdateManager.ERROR_STATE)
-      console.log('Error updating app: ' + message)
+      self.logger.error('auto-updater-manager.error', { message: message })
     })
 
     autoUpdater.setFeedUrl(this.feedUrl)
@@ -36,7 +37,7 @@ export default class AutoUpdateManager extends Events.EventEmitter {
 
     autoUpdater.on('update-downloaded', function (event, releaseNotes, releaseName, releaseDate, updateUrl) {
       self.setState(AutoUpdateManager.UPDATE_AVAILABLE_STATE)
-      console.log({releaseNotes: releaseNotes, releaseName: releaseName, releaseDate: releaseDate, updateUrl: updateUrl})
+      self.logger.info('auto-update-manager.update-downloaded', {releaseNotes: releaseNotes, releaseName: releaseName, releaseDate: releaseDate, updateUrl: updateUrl})
 
       self.emit('update-available', releaseName)
     })
@@ -47,7 +48,7 @@ export default class AutoUpdateManager extends Events.EventEmitter {
   setState (state) {
     this.state = state
     this.emit('state-changed', state)
-    console.log('state-changed: ' + state)
+    this.logger.info('auto-update-manager.state-changed', { state: state })
   }
 
   scheduleUpdateCheck () {

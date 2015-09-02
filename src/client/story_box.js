@@ -24,7 +24,7 @@ export default class StoryBox extends React.Component {
 
     self.client.on('update-available', function (err, releaseVersion) {
       if (err) {
-        console.log(err)
+        console.error(err)
         return
       }
 
@@ -33,7 +33,7 @@ export default class StoryBox extends React.Component {
 
     self.client.request('current-version', function (err, version) {
       if (err) {
-        console.log(err)
+        console.error(err)
         return
       }
 

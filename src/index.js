@@ -8,6 +8,8 @@ import StoryManager from './server/story_manager'
 import TrayManager from './server/tray_manager'
 import StoryType from './model/story_type'
 import ReadCache from './model/read_cache'
+import fs from 'fs-plus'
+import Winston from 'winston'
 
 var server = new Server()
 
@@ -21,13 +23,26 @@ var menu = Menubar(opts)
 var appDataPath = Path.join(menu.app.getPath('appData'), menu.app.getName())
 var readCache = new ReadCache(appDataPath, 500)
 
+var logDir = Path.join(appDataPath, 'Log')
+try {
+  fs.mkdirSync(logDir)
+} catch (e) {
+  // ignore
+}
+var logger = global.logger = new Winston.Logger({
+  transports: [
+    new Winston.transports.Console(),
+    new Winston.transports.DailyRotateFile({ filename: Path.join(logDir, 'app.log') })
+  ]
+})
+
 process.on('uncaughtException', function (error) {
   if (!_.isEmpty(error.message)) {
-    console.log(error.message)
+    logger.error(error.message)
   }
 
   if (!_.isEmpty(error.stack)) {
-    console.log(error.stack)
+    logger.error(error.stack)
   }
 })
 
@@ -42,7 +57,7 @@ menu.on('after-create-window', function () {
 
   menu.window.on('closed', function () {
     menu.window = null
-    console.log('persisting db')
+    logger.info('persisting db')
     readCache.store()
   })
 })
@@ -75,7 +90,7 @@ menu.on('ready', function () {
 
     storyManager.watch(type, function (err, stories) {
       if (err) {
-        console.log(err)
+        logger.error(err)
         return
       }
 

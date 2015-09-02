@@ -9,6 +9,7 @@ export default class ReadCache {
     this.cache = LRU({
       max: cacheSize
     })
+    this.logger = global.logger
   }
 
   load () {
@@ -16,7 +17,9 @@ export default class ReadCache {
     try {
       result = JSON.parse(fs.readFileSync(this.path, 'utf8'))
     } catch (e) {
-      console.log(e)
+      if (e.code !== 'ENOENT') {
+        this.logger.error('read-cache.error', e)
+      }
     }
 
     if (result['read']) {
