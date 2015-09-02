@@ -28,14 +28,14 @@ try {
 } catch (e) {
   // ignore
 }
-var logger = global.logger = new Winston.Logger({
+var logger = new Winston.Logger({
   transports: [
     new Winston.transports.Console(),
     new Winston.transports.DailyRotateFile({ filename: Path.join(logDir, 'app.log') })
   ]
 })
 
-var readCache = new ReadCache(appDataPath, 500)
+var readCache = new ReadCache(appDataPath, 500, logger)
 
 process.on('uncaughtException', function (error) {
   if (!_.isEmpty(error.message)) {
@@ -65,7 +65,7 @@ menu.on('after-create-window', function () {
 menu.on('ready', function () {
   menu.tray.setToolTip('Hacker Menu')
 
-  var autoUpdateManager = new AutoUpdateManager(menu.app.getVersion())
+  var autoUpdateManager = new AutoUpdateManager(menu.app.getVersion(), logger)
   autoUpdateManager.on('update-available', function (releaseVersion) {
     server.send('update-available', releaseVersion)
   })

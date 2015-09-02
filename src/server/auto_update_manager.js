@@ -2,13 +2,13 @@ import Events from 'events'
 import autoUpdater from 'auto-updater'
 
 export default class AutoUpdateManager extends Events.EventEmitter {
-  constructor (version) {
+  constructor (version, logger) {
     super()
     this.version = version
     // this.feedUrl = 'http://localhost:5000/updates?version=' + version
     this.feedUrl = 'https://hacker-menu.herokuapp.com/updates?version=' + version
     this.state = AutoUpdateManager.IDLE_STATE
-    this.logger = global.logger
+    this.logger = logger
 
     process.nextTick(this.setupAutoUpdater.bind(this))
   }

@@ -4,12 +4,12 @@ import fs from 'fs-plus'
 import _ from 'underscore'
 
 export default class ReadCache {
-  constructor (folder, cacheSize) {
+  constructor (folder, cacheSize, logger) {
     this.path = path.join(folder, 'Storage', 'db.json')
     this.cache = LRU({
       max: cacheSize
     })
-    this.logger = global.logger
+    this.logger = logger
 
     setInterval(function () {
       this.store()
