@@ -10,6 +10,10 @@ export default class ReadCache {
       max: cacheSize
     })
     this.logger = global.logger
+
+    setInterval(function () {
+      this.store()
+    }.bind(this), 1000 * 60 * 60) // every hour
   }
 
   load () {
