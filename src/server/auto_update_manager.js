@@ -18,7 +18,7 @@ export default class AutoUpdateManager extends Events.EventEmitter {
 
     autoUpdater.on('error', function (event, message) {
       self.setState(AutoUpdateManager.ERROR_STATE)
-      self.logger.error('auto-updater-manager.error', { message: message })
+      self.logger.error('auto-updater-manager.error', { error: message })
     })
 
     autoUpdater.setFeedUrl(this.feedUrl)
