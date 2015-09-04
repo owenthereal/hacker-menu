@@ -2,6 +2,7 @@ import React from 'react'
 import _ from 'underscore'
 import Client from 'electron-rpc/client'
 import StoryList from './story_list.js'
+import Spinner from './spinner.js'
 import Menu from './menu.js'
 import StoryType from '../model/story_type'
 
@@ -99,6 +100,14 @@ export default class StoryBox extends React.Component {
         <a key={selection} className={className} onClick={this.onNavbarClick.bind(this, selection)}>{selection}</a>
       )
     }, this)
+
+    var content = null
+    if (_.isEmpty(this.state.stories)) {
+      content = <Spinner />
+    } else {
+      content = <StoryList stories={this.state.stories} onUrlClick={this.onUrlClick.bind(this)} onMarkAsRead={this.onMarkAsRead.bind(this)} />
+    }
+
     return (
       <div className='story-menu'>
         <header className='bar bar-nav'>
@@ -106,7 +115,7 @@ export default class StoryBox extends React.Component {
             {navNodes}
           </div>
         </header>
-        <StoryList stories={this.state.stories} onUrlClick={this.onUrlClick.bind(this)} onMarkAsRead={this.onMarkAsRead.bind(this)} />
+        {content}
         <Menu onQuitClick={this.onQuitClick.bind(this)} status={this.state.status} version={this.state.version} upgradeVersion={this.state.upgradeVersion} />
       </div>
     )
