@@ -17,6 +17,7 @@ export default class StoryBox extends React.Component {
       version: '',
       upgradeVersion: ''
     }
+    this.storycb = null
   }
 
   componentDidMount () {
