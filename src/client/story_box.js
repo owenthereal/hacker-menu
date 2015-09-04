@@ -63,19 +63,28 @@ export default class StoryBox extends React.Component {
   onNavbarClick (selected) {
     var self = this
 
+    self.setState({ stories: [], selected: selected })
+
     if (self.storycb) {
       self.client.removeListener(selected, self.storycb)
     }
 
-    self.setState({ stories: [], selected: selected })
-    self.storycb = function (err, stories) {
+    self.storycb = function (err, storiesMap) {
       if (err) {
+        return
+      }
+
+      // console.log(JSON.stringify(Object.keys(storiesMap), null, 2))
+
+      var stories = storiesMap[self.state.selected]
+      if (!stories) {
         return
       }
 
       // console.log(JSON.stringify(stories, null, 2))
       self.setState({stories: stories})
     }
+
     self.client.request(selected, self.storycb)
     self.client.on(selected, self.storycb)
   }

@@ -84,7 +84,10 @@ menu.on('ready', function () {
           return next(err)
         }
 
-        next(null, stories)
+        var body = {}
+        body[type] = stories
+
+        next(null, body)
       })
     })
 
@@ -94,7 +97,10 @@ menu.on('ready', function () {
         return
       }
 
-      server.send(type, stories)
+      var body = {}
+      body[type] = stories
+
+      server.send(type, body)
     })
   })
 
