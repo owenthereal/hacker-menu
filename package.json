@@ -1,7 +1,7 @@
 {
   "name": "hacker-menu",
   "productName": "Hacker Menu",
-  "version": "1.0.0",
+  "version": "1.0.0.rc2",
   "description": "A menu to read Hacker News",
   "main": "./dist/index.js",
   "repository": {
@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/jingweno/hacker-menu/issues"
   },
-  "license": "MIT",
+  "license": "ISC",
   "scripts": {
     "build": "babel src -D -d dist",
     "csscomb": "csscomb css/layout.css",
@@ -23,7 +23,6 @@
     "package": "npm run build && electron-packager . 'Hacker Menu' --overwrite --sign='Developer ID Application: Jingwen Ou' --icon='images/Icon@1024.icns' --platform=darwin --arch=x64 --version=0.31.1 --ignore='src' --ignore='node_modules/(babel|standard|csscomb)' --ignore='node_modules/electron-(packager|prebuild|rebuild)'"
   },
   "author": "Jingwen Owen Ou",
-  "license": "ISC",
   "devDependencies": {
     "babel": "^5.8.21",
     "babel-eslint": "^4.0.10",
@@ -42,6 +41,7 @@
     "menubar": "^2.1.2",
     "moment": "^2.10.6",
     "nslog": "^3.0.0",
+    "publish-release": "^1.1.0",
     "react": "^0.13.3",
     "underscore": "^1.8.3",
     "winston": "^1.0.1"
