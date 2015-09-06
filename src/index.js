@@ -8,8 +8,8 @@ import StoryManager from './server/story_manager'
 import TrayManager from './server/tray_manager'
 import StoryType from './model/story_type'
 import ReadCache from './model/read_cache'
-import fs from 'fs-plus'
 import Winston from 'winston'
+import Nslog from './winston/nslog'
 
 var server = new Server()
 
@@ -22,16 +22,9 @@ var opts = {
 var menu = Menubar(opts)
 var appDataPath = Path.join(menu.app.getPath('appData'), menu.app.getName())
 
-var logDir = Path.join(appDataPath, 'Log')
-try {
-  fs.mkdirSync(logDir)
-} catch (e) {
-  // ignore
-}
 var logger = new Winston.Logger({
   transports: [
-    new Winston.transports.Console(),
-    new Winston.transports.DailyRotateFile({ filename: Path.join(logDir, 'app.log') })
+    new Nslog()
   ]
 })
 
