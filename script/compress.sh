@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+
+rm -rf release
+mkdir release
+
+cd 'Hacker Menu-darwin-x64'
+zip -9 -r --symlinks hacker-menu-mac.zip Hacker\ Menu.app
+mv hacker-menu-mac.zip ../release
