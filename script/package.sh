@@ -10,5 +10,7 @@ electron-packager . 'Hacker Menu' \
   --arch=x64 \
   --version=$npm_package_config_electron_version \
   --ignore='src' \
+  --ignore='script' \
+  --ignore='release' \
   --ignore='node_modules/(babel|standard|csscomb)' \
   --ignore='node_modules/electron-(packager|prebuild|rebuild)'
