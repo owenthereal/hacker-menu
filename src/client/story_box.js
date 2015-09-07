@@ -18,7 +18,6 @@ export default class StoryBox extends React.Component {
       version: '',
       upgradeVersion: ''
     }
-    this.storycb = null
   }
 
   componentDidMount () {
@@ -65,12 +64,9 @@ export default class StoryBox extends React.Component {
     var self = this
 
     self.setState({ stories: [], selected: selected })
+    self.client.localEventEmitter.removeAllListeners()
 
-    if (self.storycb) {
-      self.client.removeListener(selected, self.storycb)
-    }
-
-    self.storycb = function (err, storiesMap) {
+    var storycb = function (err, storiesMap) {
       if (err) {
         return
       }
@@ -86,8 +82,8 @@ export default class StoryBox extends React.Component {
       self.setState({stories: stories})
     }
 
-    self.client.request(selected, self.storycb)
-    self.client.on(selected, self.storycb)
+    self.client.request(selected, storycb)
+    self.client.on(selected, storycb)
   }
 
   render () {
