@@ -6,7 +6,7 @@ export default class AutoUpdateManager extends Events.EventEmitter {
     super()
     this.version = version
     // this.feedUrl = 'http://localhost:5000/updates?version=' + version
-    this.feedUrl = 'https://hacker-menu.herokuapp.com/updates?version=' + version
+    this.feedUrl = 'https://api.hackermenu.io/updates?version=' + version
     this.state = AutoUpdateManager.IDLE_STATE
     this.logger = logger
 
