@@ -1,6 +1,6 @@
 import nslog from 'nslog'
 import moment from 'moment'
-import _ from 'underscore'
+import _ from 'lodash'
 
 export default class Nslog {
   constructor () {

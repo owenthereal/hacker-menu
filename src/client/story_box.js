@@ -1,5 +1,5 @@
 import React from 'react'
-import _ from 'underscore'
+import _ from 'lodash'
 import Client from 'electron-rpc/client'
 import StoryList from './story_list.js'
 import Spinner from './spinner.js'

@@ -2,7 +2,7 @@ import Menubar from 'menubar'
 import Shell from 'shell'
 import Server from 'electron-rpc/server'
 import Path from 'path'
-import _ from 'underscore'
+import _ from 'lodash'
 import AutoUpdateManager from './server/auto_update_manager'
 import StoryManager from './server/story_manager'
 import TrayManager from './server/tray_manager'
@@ -112,7 +112,8 @@ menu.on('ready', function () {
   })
 
   server.on('open-url', function (req) {
-    Shell.openExternal(req.body.url)
+    var url = _.trim(req.body.url, '#')
+    Shell.openExternal(url)
   })
 
   server.on('mark-as-read', function (req, next) {

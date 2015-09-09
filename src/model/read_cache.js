@@ -1,7 +1,7 @@
 import LRU from 'lru-cache'
 import path from 'path'
 import fs from 'fs-plus'
-import _ from 'underscore'
+import _ from 'lodash'
 
 export default class ReadCache {
   constructor (folder, cacheSize, logger) {

@@ -1,6 +1,6 @@
 import React from 'react'
 import Story from './story.js'
-import _ from 'underscore'
+import _ from 'lodash'
 
 export default class StoryList extends React.Component {
   render () {

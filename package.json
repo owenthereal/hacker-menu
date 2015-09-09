@@ -42,12 +42,12 @@
     "electron-rpc": "^1.0.3",
     "firebase": "^2.2.9",
     "fs-plus": "^2.8.1",
+    "lodash": "^3.10.1",
     "lru-cache": "^2.6.5",
     "menubar": "^2.1.2",
     "moment": "^2.10.6",
     "nslog": "^3.0.0",
     "react": "^0.13.3",
-    "underscore": "^1.8.3",
     "winston": "^1.0.1"
   }
 }
