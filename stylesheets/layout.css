@@ -1,0 +1,127 @@
+body {
+  color: #333;
+  font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* common */
+.btn {
+  background: #ff6601;
+  color: #fff;
+  display: inline-block;
+  padding: .7em 1em;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #d95600;
+}
+
+.clearfix {
+  overflow: auto;
+}
+
+/* banner */
+.banner-wrap {
+  background: #535252;
+  color: #fff;
+}
+
+.banner-wrap .banner {
+  background: url(../images/banner.png) no-repeat center center;
+  height: 530px;
+}
+
+.banner-wrap .heading {
+  font-size: 45px;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: .8rem;
+}
+
+.banner-wrap .sub-heading {
+  color: #8b8b8c;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.branding {
+  line-height: 1;
+  margin-top: 3.3rem;
+}
+
+.branding .logo-mark {
+  display: block;
+  float: left;
+}
+
+.branding .logo-type {
+  display: block;
+  float: left;
+  margin: 2.8rem 0 0 1rem;
+}
+
+
+/* features */
+.features-wrap {
+  padding: 3rem 0;
+}
+
+.feature {
+  padding: 1rem 4rem;
+}
+
+.feature-image {
+  float: left;
+  margin-right: 1rem;
+}
+
+.sub-heading {
+  margin: 1rem 0 .5rem;
+}
+
+/* highlight */
+.highlight-wrap {
+  background: #4c4f50;
+  color: #fff;
+  text-align: center;
+}
+
+.highlight-wrap p {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.highlight {
+  padding: 1rem 4rem;
+}
+
+/* footer */
+.footer {
+  color: #999;
+  font-size: 13px;
+  font-style: italic;
+  text-align: center;
+}
+
+/* debug */
+.dbg-bdr--red {
+  border: 1px solid red;
+}
+
+/* responsive */
+@media (min-width: 720px) {
+  .feature {
+    padding: 0 4rem;
+  }
+
+  .feature-image {
+    float: none;
+    margin-right: 0;
+  }
+
+  .sub-heading {
+    margin: 1.5rem 0 .5rem;
+  }
+}
