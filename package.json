@@ -1,7 +1,7 @@
 {
   "name": "hacker-menu",
   "productName": "Hacker Menu",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A menu to read Hacker News",
   "main": "./dist/index.js",
   "repository": {
