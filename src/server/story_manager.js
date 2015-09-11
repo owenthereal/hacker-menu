@@ -56,6 +56,10 @@ export default class StoryManager extends Events.EventEmitter {
       self.emit('story-manager-status', { type: type, status: StoryManagerStatus.SYNCING_STATUS })
       async.map(storyIds.val(), self.fetchStory.bind(self), function (err, stories) {
         callback(err, stories)
+        if (err) {
+          return
+        }
+
         self.emit('story-manager-status', { type: type, status: StoryManagerStatus.UPDATED_STATUS })
       })
     }, function (err) {
@@ -74,6 +78,10 @@ export default class StoryManager extends Events.EventEmitter {
       self.emit('story-manager-status', { type: type, status: StoryManagerStatus.SYNCING_STATUS })
       async.map(storyIds.val(), self.fetchStory.bind(self), function (err, stories) {
         self.emit(type, err, stories)
+        if (err) {
+          return
+        }
+
         self.emit('story-manager-status', { type: type, status: StoryManagerStatus.UPDATED_STATUS })
 
         if (!self.stories[type]) {
