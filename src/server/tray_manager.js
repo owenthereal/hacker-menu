@@ -1,3 +1,5 @@
+import NativeImage from 'native-image'
+
 export default class TrayManager {
   constructor (window, tray, icon, iconNew) {
     this.window = window
@@ -12,7 +14,7 @@ export default class TrayManager {
     var self = this
     var setIcon = function () {
       if (self.hasNewStories) {
-        self.tray.setImage(self.icon)
+        self.tray.setImage(NativeImage.createFromPath(self.icon))
         self.hasNewStories = false
       }
     }
@@ -22,7 +24,7 @@ export default class TrayManager {
 
   notifyNewStories () {
     if (!this.hasNewStories && !this.window.isVisible()) {
-      this.tray.setImage(this.iconNew)
+      this.tray.setImage(NativeImage.createFromPath(this.iconNew))
       this.hasNewStories = true
     }
   }
