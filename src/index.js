@@ -69,6 +69,9 @@ menu.on('ready', function () {
   storyManager.on('new-story', function () {
     trayManager.notifyNewStories()
   })
+  storyManager.on('story-manager-status', function (status) {
+    logger.info('story-manager-status', status)
+  })
 
   _.each(StoryType.ALL, function (type) {
     server.on(type, function (req, next) {
