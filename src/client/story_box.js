@@ -23,15 +23,6 @@ export default class StoryBox extends React.Component {
   componentDidMount () {
     var self = this
 
-    self.client.on('update-available', function (err, releaseVersion) {
-      if (err) {
-        console.error(err)
-        return
-      }
-
-      self.setState({ status: 'update-available', upgradeVersion: releaseVersion })
-    })
-
     self.client.request('current-version', function (err, version) {
       if (err) {
         console.error(err)
@@ -65,6 +56,15 @@ export default class StoryBox extends React.Component {
 
     self.setState({ stories: [], selected: selected })
     self.client.localEventEmitter.removeAllListeners()
+
+    self.client.on('update-available', function (err, releaseVersion) {
+      if (err) {
+        console.error(err)
+        return
+      }
+
+      self.setState({ status: 'update-available', upgradeVersion: releaseVersion })
+    })
 
     var storycb = function (err, storiesMap) {
       if (err) {
