@@ -1,6 +1,7 @@
 # Hacker Menu
 
-[Hacker Menu](https://hackermenu.io/) delivers [Hacker News](https://news.ycombinator.com/) to your desktop, built with love by [@jingweno](https://github.com/jingweno) & [@lokywin](https://github.com/lokywin). It's powered by [Electron](http://electron.atom.io/).
+[Hacker Menu](https://hackermenu.io/) stays on your menu bar and delivers the top news stories from [Y Combinator news aggregator](https://news.ycombinator.com/),
+built with love by [@jingweno](https://github.com/jingweno) & [@lokywin](https://github.com/lokywin). It's powered by [Electron](http://electron.atom.io/).
 
 ## Development
 
