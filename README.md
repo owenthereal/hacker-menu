@@ -11,7 +11,7 @@ $ npm install # installs dependencies
 $ npm start # starts the app in the electron wrapper
 $ npm test # runs tests
 $ npm run watch # watches and rebuilds assets
-$ npm run package # builds and packages the Mac app
+$ npm run release # builds and packages the Mac app
 ```
 # License
 
