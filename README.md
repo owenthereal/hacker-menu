@@ -1,6 +1,6 @@
 # Hacker Menu
 
-Read [Hacker News](https://news.ycombinator.com/) on your Desktop like a hacker :dancers:.
+[Hacker News](https://news.ycombinator.com/) delivered to desktop, built with [Electron](http://electron.atom.io/).
 
 # Development
 
@@ -13,3 +13,6 @@ $ npm test # runs tests
 $ npm run watch # watches and rebuilds assets
 $ npm run package # builds and packages the Mac app
 ```
+# License
+
+See [LICENSE](https://github.com/jingweno/hacker-menu/blob/master/LICENSE).
