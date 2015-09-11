@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/jingweno/hacker-menu/issues"
   },
-  "license": "ISC",
+  "license": "MIT",
   "config": {
     "electron_version": "0.31.2"
   },
