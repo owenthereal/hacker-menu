@@ -31,12 +31,8 @@ var logger = new Winston.Logger({
 var readCache = new ReadCache(appDataPath, 500, logger)
 
 process.on('uncaughtException', function (error) {
-  if (!_.isEmpty(error.message)) {
-    logger.error(error.message)
-  }
-
-  if (!_.isEmpty(error.stack)) {
-    logger.error(error.stack)
+  if (error) {
+    logger.error('uncaughtException', { message: error.message, stack: error.stack })
   }
 })
 
@@ -89,7 +85,7 @@ menu.on('ready', function () {
 
     storyManager.watch(type, function (err, stories) {
       if (err) {
-        logger.error(err)
+        logger.error('story-manager-watch-error', { message: err.message, stack: err.stack })
         return
       }
 

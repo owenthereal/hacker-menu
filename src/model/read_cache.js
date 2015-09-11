@@ -22,7 +22,7 @@ export default class ReadCache {
       result = JSON.parse(fs.readFileSync(this.path, 'utf8'))
     } catch (e) {
       if (e.code !== 'ENOENT') {
-        this.logger.error('read-cache.error', e)
+        this.logger.error('read-cache.error', { message: e.message, stack: e.stack })
       }
     }
 
