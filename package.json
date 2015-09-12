@@ -20,7 +20,7 @@
     "electron_version": "0.31.2"
   },
   "scripts": {
-    "build": "babel src -D -d dist",
+    "build": "babel src -D -d dist --compact true",
     "csscomb": "csscomb css/layout.css",
     "watch": "babel src -D -d dist -w",
     "test": "standard",
