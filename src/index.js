@@ -9,7 +9,9 @@ import TrayManager from './server/tray_manager'
 import StoryType from './model/story_type'
 import ReadCache from './model/read_cache'
 import Winston from 'winston'
+import NewrelicWinston from 'newrelic-winston'
 import Nslog from './winston/nslog'
+import fs from 'fs'
 
 var server = new Server()
 
@@ -22,9 +24,16 @@ var opts = {
 var menu = Menubar(opts)
 var appDataPath = Path.join(menu.app.getPath('appData'), menu.app.getName())
 
+var env = 'prod'
+try {
+  fs.statSync(Path.join(__dirname, 'newrelic.js'))
+} catch (err) {
+  env = 'dev'
+}
 var logger = new Winston.Logger({
   transports: [
-    new Nslog()
+    new Nslog(),
+    new NewrelicWinston({ env: env })
   ]
 })
 

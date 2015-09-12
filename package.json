@@ -50,6 +50,7 @@
     "lru-cache": "^2.6.5",
     "menubar": "^2.2.1",
     "moment": "^2.10.6",
+    "newrelic-winston": "0.0.1",
     "nslog": "^3.0.0",
     "react": "^0.13.3",
     "winston": "^1.0.1"
