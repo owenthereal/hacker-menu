@@ -93,6 +93,7 @@ menu.on('ready', function () {
     server.on(type, function (req, next) {
       storyManager.fetch(type, function (err, stories) {
         if (err) {
+          logger.error('story-manager-fetch-error', { message: err.message, stack: err.stack })
           return next(err)
         }
 
