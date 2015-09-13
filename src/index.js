@@ -30,11 +30,22 @@ try {
 } catch (err) {
   env = 'dev'
 }
+
+var versionRewriter = function (level, msg, meta) {
+  if (!meta) {
+    meta = {}
+  }
+
+  meta.version = menu.app.getVersion()
+  return meta
+}
+
 var logger = new Winston.Logger({
   transports: [
     new Nslog(),
     new NewrelicWinston({ env: env })
-  ]
+  ],
+  rewriters: [ versionRewriter ]
 })
 
 var readCache = new ReadCache(appDataPath, 500, logger)
