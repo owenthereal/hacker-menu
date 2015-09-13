@@ -18,7 +18,12 @@ export default class StoryManager extends Events.EventEmitter {
 
   fetchStory (storyId, callback) {
     var self = this
-    self.fb.child('item/' + storyId).once('value', function (storySnapshot) {
+
+    var error = function (err) {
+      callback(err)
+    }
+
+    var success = function (storySnapshot) {
       var story = storySnapshot.val()
       if (!story) {
         callback(new Error('Error loading ' + storySnapshot.key()))
@@ -46,13 +51,19 @@ export default class StoryManager extends Events.EventEmitter {
       // console.log(JSON.stringify(story, null, 2))
 
       callback(null, story)
-    })
+    }
+
+    self.fb.child('item/' + storyId).once('value', success, error)
   }
 
   fetch (type, callback) {
     var self = this
 
-    self.fb.child(self.getChildName(type)).limitToFirst(self.maxNumOfStories).once('value', function (storyIds) {
+    var error = function (err) {
+      callback(err)
+    }
+
+    var success = function (storyIds) {
       self.emit('story-manager-status', { type: type, status: StoryManagerStatus.SYNCING_STATUS })
       async.map(storyIds.val(), self.fetchStory.bind(self), function (err, stories) {
         callback(err, stories)
@@ -62,9 +73,9 @@ export default class StoryManager extends Events.EventEmitter {
 
         self.emit('story-manager-status', { type: type, status: StoryManagerStatus.UPDATED_STATUS })
       })
-    }, function (err) {
-      callback(err)
-    })
+    }
+
+    self.fb.child(self.getChildName(type)).limitToFirst(self.maxNumOfStories).once('value', success, error)
   }
 
   watch (type, callback) {
@@ -74,7 +85,11 @@ export default class StoryManager extends Events.EventEmitter {
       self.on(type, callback)
     }
 
-    self.fb.child(self.getChildName(type)).limitToFirst(self.maxNumOfStories).on('value', function (storyIds) {
+    var error = function (err) {
+      self.emit(type, err)
+    }
+
+    var success = function (storyIds) {
       self.emit('story-manager-status', { type: type, status: StoryManagerStatus.SYNCING_STATUS })
       async.map(storyIds.val(), self.fetchStory.bind(self), function (err, stories) {
         self.emit(type, err, stories)
@@ -93,9 +108,9 @@ export default class StoryManager extends Events.EventEmitter {
         }
         self.stories[type] = stories
       })
-    }, function (err) {
-      self.emit(type, err)
-    })
+    }
+
+    self.fb.child(self.getChildName(type)).limitToFirst(self.maxNumOfStories).on('value', success, error)
   }
 
   filterNewStories (updatedStories, oldStories) {
