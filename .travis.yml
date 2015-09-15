@@ -1,0 +1,13 @@
+sudo: false
+language: node_js
+node_js:
+  - 0.12
+script:
+  - npm test
+  - npm run release
+os:
+  - osx
+notifications:
+  email:
+    on_success: never
+    on_failure: change

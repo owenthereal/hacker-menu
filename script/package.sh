@@ -6,7 +6,6 @@ var opts = {
   dir: '.',
   name: 'Hacker Menu',
   overwrite: true,
-  sign: 'Developer ID Application: Jingwen Ou',
   icon: 'images/Icon@1024.icns',
   platform: 'darwin',
   arch: 'x64',
@@ -18,6 +17,9 @@ var opts = {
     'node_modules/(babel|standard|csscomb)',
     'node_modules/electron-(packager|prebuild|rebuild)'
   ]
+}
+if (!process.env.CI) {
+  opts.sign = 'Developer ID Application: Jingwen Ou'
 }
 packager(opts, function done (err, appPaths) {
   if (err) {
