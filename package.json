@@ -16,9 +16,6 @@
     "url": "https://github.com/jingweno/hacker-menu/issues"
   },
   "license": "MIT",
-  "config": {
-    "electron_version": "0.31.2"
-  },
   "scripts": {
     "build": "babel src -D -d dist --compact true",
     "csscomb": "csscomb css/layout.css",
@@ -32,12 +29,15 @@
     "release": "npm run package && npm run compress"
   },
   "author": "Jingwen Owen Ou",
+  "config": {
+    "electron_version": "0.32.2"
+  },
   "devDependencies": {
     "babel": "^5.8.21",
     "babel-eslint": "^4.0.10",
     "csscomb": "^3.1.8",
-    "electron-packager": "^5.0.1",
-    "electron-prebuilt": "^0.31.2",
+    "electron-packager": "^5.1.0",
+    "electron-prebuilt": "^0.32.2",
     "electron-rebuild": "^1.0.0",
     "standard": "^5.1.0"
   },
