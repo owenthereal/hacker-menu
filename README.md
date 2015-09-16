@@ -5,6 +5,10 @@ built with love by [@jingweno](https://github.com/jingweno) & [@lokywin](https:/
 
 Website: [https://hackermenu.io](https://hackermenu.io).
 
+## Installation
+
+Download the latest build for your platform from [releases](https://github.com/jingweno/hacker-menu/releases).
+
 ## Development
 
 You need to have the latest [io.js](https://iojs.org) or [node.js](https://nodejs.org/) installed.
