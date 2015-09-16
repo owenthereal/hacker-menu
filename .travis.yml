@@ -1,7 +1,8 @@
 sudo: false
 before_install:
-  - brew update
-  - brew install nvm
+  - brew update && brew install nvm
+  - mkdir ~/.nvm && cp $(brew --prefix nvm)/nvm-exec ~/.nvm/
+  - export NVM_DIR=~/.nvm && source $(brew --prefix nvm)/nvm.sh
   - nvm install 0.12.7
 script:
   - npm test
