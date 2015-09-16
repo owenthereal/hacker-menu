@@ -1,7 +1,8 @@
 sudo: false
-language: node_js
-node_js:
-  - 0.12.7
+before_install:
+  - brew update
+  - brew install nvm
+  - nvm install 0.12.7
 script:
   - npm test
   - npm run release
