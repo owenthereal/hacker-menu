@@ -16,6 +16,11 @@ You need to have the latest [io.js](https://iojs.org) or [node.js](https://nodej
 ```bash
 $ npm install # installs dependencies
 $ npm start # starts the app in the electron wrapper
+```
+
+Other useful tasks:
+
+```bash
 $ npm test # runs tests
 $ npm run watch # watches and rebuilds assets
 $ npm run release # builds and packages the Mac app
