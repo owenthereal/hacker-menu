@@ -5,6 +5,8 @@ built with love by [@jingweno](https://github.com/jingweno) & [@lokywin](https:/
 
 Website: [https://hackermenu.io](https://hackermenu.io).
 
+Screenshot:
+![Hacker Menu Screenshot](images/screenshot.png)
 ## Installation
 
 Download the latest build for your platform from [releases](https://github.com/jingweno/hacker-menu/releases). We only have OSX build now, and we're working Windows and Linux builds. Feel free to contribute if you can't wait :heart:.
