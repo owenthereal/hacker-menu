@@ -8,10 +8,7 @@ import StoryManager from './server/story_manager'
 import TrayManager from './server/tray_manager'
 import StoryType from './model/story_type'
 import ReadCache from './model/read_cache'
-import Winston from 'winston'
-import NewrelicWinston from 'newrelic-winston'
-import Nslog from './winston/nslog'
-import fs from 'fs'
+import Logger from './logger'
 
 var server = new Server()
 
@@ -23,31 +20,7 @@ var opts = {
 }
 var menu = Menubar(opts)
 var appDataPath = Path.join(menu.app.getPath('appData'), menu.app.getName())
-
-var env = 'prod'
-try {
-  fs.statSync(Path.join(__dirname, 'newrelic.js'))
-} catch (err) {
-  env = 'dev'
-}
-
-var versionRewriter = function (level, msg, meta) {
-  if (!meta) {
-    meta = {}
-  }
-
-  meta.version = menu.app.getVersion()
-  return meta
-}
-
-var logger = new Winston.Logger({
-  transports: [
-    new Nslog(),
-    new NewrelicWinston({ env: env })
-  ],
-  rewriters: [ versionRewriter ]
-})
-
+var logger = Logger(appDataPath, menu.app.getVersion())
 var readCache = new ReadCache(appDataPath, 500, logger)
 
 process.on('uncaughtException', function (error) {

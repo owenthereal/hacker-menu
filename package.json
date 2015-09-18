@@ -21,7 +21,6 @@
     "csscomb": "csscomb css/layout.css",
     "watch": "babel src -D -d dist -w",
     "test": "standard",
-    "postinstall": "./node_modules/.bin/electron-rebuild",
     "prestart": "npm run build",
     "start": "electron ./",
     "compress": "./script/compress.sh",
@@ -38,7 +37,6 @@
     "csscomb": "^3.1.8",
     "electron-packager": "^5.1.0",
     "electron-prebuilt": "^0.31.2",
-    "electron-rebuild": "^1.0.0",
     "standard": "^5.1.0"
   },
   "dependencies": {
@@ -51,7 +49,6 @@
     "menubar": "^2.2.1",
     "moment": "^2.10.6",
     "newrelic-winston": "0.0.1",
-    "nslog": "^3.0.0",
     "react": "^0.13.3",
     "winston": "^1.0.1"
   }
