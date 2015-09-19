@@ -178,3 +178,6 @@ body {
   padding: 17px 14px 14px 23px;
   top: 0;
 }
+.bar .btn:active {
+  outline: none;
+}
