@@ -23,8 +23,8 @@
     "test": "standard",
     "prestart": "npm run build",
     "start": "electron ./",
-    "compress": "./script/compress.sh",
-    "package": "npm run build && ./script/package.sh",
+    "compress": "./script/compress",
+    "package": "npm run build && ./script/package",
     "release": "npm run package && npm run compress"
   },
   "author": "Jingwen Owen Ou",
