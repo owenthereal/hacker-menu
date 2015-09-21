@@ -27,6 +27,19 @@ $ npm test # runs tests
 $ npm run watch # watches and rebuilds assets
 $ npm run release # builds and packages the Mac app
 ```
+
+## Known Issues
+- Large filesize. Unfortunately, there is not much we can do about this. At the core, the app is small, because it is written in JS, HTML and CSS. We use Eletron wrapper which cause the large filesize.
+
+## Upcoming Features and Improvements
+
+#### 1. Upcoming Features
+- Add ability to mark a news item as **not interested**, and it will not be shown on the list.
+- Remember the menu dimension after resizing.
+- Add ranking. As the poster, I find myself looking for ranking of a news item.
+
+#### 2. Upcoming Improvements
+
 ## License
 
 See [LICENSE](https://github.com/jingweno/hacker-menu/blob/master/LICENSE).
