@@ -33,12 +33,12 @@ $ npm run release # builds and packages the Mac app
 
 ## Upcoming Features and Improvements
 
-#### 1. Upcoming Features
+#### 1. Features
 - Add ability to mark a news item as **not interested**, and it will not be shown on the list.
 - Remember the menu dimension after resizing.
 - Add ranking. As the poster, I find myself looking for ranking of a news item.
 
-#### 2. Upcoming Improvements
+#### 2. Improvements
 
 ## License
 
