@@ -29,7 +29,7 @@ $ npm run release # builds and packages the Mac app
 ```
 
 ## Known Issues
-- Large filesize. Unfortunately, there is not much we can do about this. At the core, the app is small, because it is written in JS, HTML and CSS. We use Eletron wrapper which cause the large filesize.
+- Large filesize. The app itself is small because it is written in HTML, CSS and JS. What makes the file large is the Eletron wrapper that we use. Unfortunately, there is not much we can do about this.
 
 ## Upcoming Features and Improvements
 
