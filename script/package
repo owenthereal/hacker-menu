@@ -2,23 +2,34 @@
 
 var packager = require('electron-packager')
 var package = require('../package.json')
+var os = require('os')
+
+var platform = os.platform()
+var arch = os.arch()
+if (process.argv.indexOf('--all') !== -1) {
+  arch = platform = 'all'
+}
+
 var opts = {
   dir: '.',
   name: 'Hacker Menu',
   overwrite: true,
   icon: 'images/Icon@1024.icns',
-  platform: 'darwin',
-  arch: 'x64',
+  platform: platform,
+  arch: arch,
+  out: 'build',
   version: package.config.electron_version,
   ignore: [
     'src',
     'script',
+    'build',
     'release',
+    'images/(Icon@1024.icns|screenshot.png)',
     'node_modules/(babel|standard|csscomb)',
     'node_modules/electron-(packager|prebuild|rebuild)'
   ]
 }
-if (!process.env.CI) {
+if (!process.env.CI && process.argv.indexOf('--sign') !== -1) {
   opts.sign = 'Developer ID Application: Jingwen Ou'
 }
 packager(opts, function done (err, appPaths) {
