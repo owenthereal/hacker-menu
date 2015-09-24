@@ -7,6 +7,7 @@ Website: [https://hackermenu.io](https://hackermenu.io).
 
 Screenshot:
 ![Hacker Menu Screenshot](images/screenshot.png)
+
 ## Installation
 
 Download the latest build for your platform from [releases](https://github.com/jingweno/hacker-menu/releases). We only have OSX build now, and we're working Windows and Linux builds. Feel free to contribute if you can't wait :heart:.
@@ -28,17 +29,10 @@ $ npm run watch # watches and rebuilds assets
 $ npm run release # builds and packages the Mac app
 ```
 
-## Known Issues
-- Large filesize. The app itself is small because it is written in HTML, CSS and JS. What makes the file large is the Eletron wrapper that we use. Unfortunately, there is not much we can do about this.
+# Roadmap
 
-## Upcoming Features and Improvements
+See [issues](https://github.com/jingweno/hacker-menu/issues?q=is%3Aopen+is%3Aissue+label%3Afeature).
 
-#### 1. Features
-- Add ability to mark a news item as **not interested**, and it will not be shown on the list.
-- Remember the menu dimension after resizing.
-- Add ranking. As the poster, I find myself looking for ranking of a news item.
-
-#### 2. Improvements
 
 ## License
 
