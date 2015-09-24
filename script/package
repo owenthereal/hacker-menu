@@ -14,7 +14,9 @@ var opts = {
   ignore: [
     'src',
     'script',
+    'build',
     'release',
+    'images/(Icon@1024.icns|screenshot.png)',
     'node_modules/(babel|standard|csscomb)',
     'node_modules/electron-(packager|prebuild|rebuild)'
   ]
