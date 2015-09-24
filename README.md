@@ -25,8 +25,10 @@ Other useful tasks:
 
 ```bash
 $ npm test # runs tests
-$ npm run watch # watches and rebuilds assets
-$ npm run release # builds and packages the Mac app
+$ npm run build # builds the app
+$ npm run watch # watches and rebuilds the app
+$ npm run package # packages the Mac app
+$ npm run release # packages and zips the Mac app, it requires a cert to sign the app
 ```
 
 # Roadmap
