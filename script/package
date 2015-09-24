@@ -29,7 +29,7 @@ var opts = {
     'node_modules/electron-(packager|prebuild|rebuild)'
   ]
 }
-if (process.argv.indexOf('--sign') !== -1) {
+if (!process.env.CI && process.argv.indexOf('--sign') !== -1) {
   opts.sign = 'Developer ID Application: Jingwen Ou'
 }
 packager(opts, function done (err, appPaths) {
