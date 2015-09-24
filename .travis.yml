@@ -12,7 +12,6 @@ after_script:
   - npm run release
 os:
   - osx
-  - linux
 notifications:
   email:
     on_success: never
