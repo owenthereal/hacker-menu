@@ -9,6 +9,7 @@ var opts = {
   icon: 'images/Icon@1024.icns',
   platform: 'darwin',
   arch: 'x64',
+  out: 'build',
   version: package.config.electron_version,
   ignore: [
     'src',
