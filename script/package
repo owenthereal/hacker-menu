@@ -13,15 +13,24 @@ if (process.argv.indexOf('--all') !== -1) {
   arch = platform = 'all'
 }
 
-var devDeps = exec('npm list --dev --parseable', {silent:true}).output.split('\n')
-var prodDeps = exec('npm list --production --parseable', {silent:true}).output.split('\n')
-devDeps = _.difference(devDeps, prodDeps)
+function parseDeps(current, deps) {
+  deps = _.map(deps, function(p) {
+    var pp = path.relative(current, p)
+    return path.join('node_modules', path.basename(pp))
+  })
+
+  return _.uniq(deps)
+}
 
 var current = path.join(__dirname, '..', 'node_modules')
-devDeps = _.map(devDeps, function(p) {
-  return path.join('node_modules', path.relative(current, p).split('/')[0])
-})
-devDeps = _.uniq(devDeps)
+
+var prodDeps = exec('npm list --production --parseable', {silent:true}).output.split('\n')
+prodDeps = parseDeps(current, prodDeps)
+
+var devDeps = exec('npm list --dev --parseable', {silent:true}).output.split('\n')
+devDeps = parseDeps(current, devDeps)
+
+devDeps = _.difference(devDeps, prodDeps)
 
 var opts = {
   dir: '.',
