@@ -9,8 +9,8 @@
     "url": "https://github.com/jingweno/hacker-menu.git"
   },
   "engines": {
-    "node": "0.12.7",
-    "npm": "2.11.3"
+    "node": "4.1.4",
+    "npm": "3.3.5"
   },
   "bugs": {
     "url": "https://github.com/jingweno/hacker-menu/issues"
@@ -30,27 +30,27 @@
   },
   "author": "Jingwen Owen Ou",
   "config": {
-    "electron_version": "0.31.2"
+    "electron_version": "0.33.4"
   },
   "devDependencies": {
-    "babel": "^5.8.21",
-    "babel-eslint": "^4.0.10",
+    "babel": "^5.8.23",
+    "babel-eslint": "^4.1.3",
     "csscomb": "^3.1.8",
     "electron-packager": "^5.1.0",
-    "electron-prebuilt": "^0.31.2",
-    "standard": "^5.1.0"
+    "electron-prebuilt": "^0.33.4",
+    "standard": "^5.3.1"
   },
   "dependencies": {
     "async": "^1.4.2",
     "electron-rpc": "^1.0.3",
-    "firebase": "^2.2.9",
+    "firebase": "^2.3.1",
     "fs-plus": "^2.8.1",
     "lodash": "^3.10.1",
-    "lru-cache": "^2.6.5",
+    "lru-cache": "^2.7.0",
     "menubar": "^2.2.1",
     "moment": "^2.10.6",
     "newrelic-winston": "0.0.1",
     "react": "^0.13.3",
-    "winston": "^1.0.1"
+    "winston": "^1.0.2"
   }
 }
