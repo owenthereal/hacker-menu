@@ -44,6 +44,7 @@
   "dependencies": {
     "async": "^1.4.2",
     "electron-rpc": "^1.0.3",
+    "electron-window-state": "^1.0.0",
     "firebase": "^2.3.1",
     "fs-plus": "^2.8.1",
     "lodash": "^3.10.1",

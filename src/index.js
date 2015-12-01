@@ -1,5 +1,6 @@
 import Menubar from 'menubar'
 import Shell from 'shell'
+import App from 'app'
 import Server from 'electron-rpc/server'
 import Path from 'path'
 import _ from 'lodash'
@@ -9,14 +10,23 @@ import TrayManager from './server/tray_manager'
 import StoryType from './model/story_type'
 import ReadCache from './model/read_cache'
 import Logger from './logger'
+import windowStateKeeper from 'electron-window-state'
 
 var server = new Server()
+
+var windowState = windowStateKeeper({
+  defaultWidth: 400,
+  defaultHeight: 400,
+  path: Path.join(App.getPath('userData'), 'Configuration')
+})
 
 var opts = {
   dir: __dirname,
   icon: Path.join(__dirname, '..', 'images', 'Icon.png'),
   iconNew: Path.join(__dirname, '..', 'images', 'Icon-new.png'),
-  preloadWindow: true
+  preloadWindow: true,
+  width: windowState.width,
+  height: windowState.height
 }
 var menu = Menubar(opts)
 var appDataPath = Path.join(menu.app.getPath('appData'), menu.app.getName())
@@ -41,6 +51,10 @@ menu.on('after-create-window', function () {
   menu.window.on('closed', function () {
     menu.window = null
     readCache.store()
+  })
+
+  menu.window.on('close', function () {
+    windowState.saveState(menu.window)
   })
 })
 
