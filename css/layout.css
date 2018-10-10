@@ -111,7 +111,7 @@ body {
 }
 
 .table-view-cell {
-  padding: 0 65px 0 0;
+  padding: 0;
 }
 
 .story {
@@ -143,10 +143,15 @@ body {
   font-size: .85rem;
   position: absolute;
   right: 15px;
-  top: 27%;
+  top: 50%;
+  transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
+}
+
+.story div.media-body {
+  padding: 10px 0;
 }
 
 .story div.media-body,div.status-color {
